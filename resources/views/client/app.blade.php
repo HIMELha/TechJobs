@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
             <div class="container">
-                <a class="navbar-brand" href="index.html">CareerVibe</a>
+                <a class="navbar-brand" href="index.html">JobSpreeks</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,9 @@
             </div>
         </nav>
     </header>
+
+    @yield('content')
+
     <footer class="bg-dark py-3 bg-2">
         <div class="container">
             <p class="text-center text-white pt-3 fw-bold fs-6">© 2023 xyz company, all right reserved</p>
