@@ -11,6 +11,7 @@ class Job extends Model
 
     protected $fillable = [
         'title',
+        'user_id',
         'category_id',
         'job_type_id',
         'vacancy',
@@ -26,4 +27,8 @@ class Job extends Model
         'company_location',
         'company_website',
     ];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

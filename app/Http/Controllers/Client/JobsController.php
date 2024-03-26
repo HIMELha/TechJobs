@@ -33,14 +33,17 @@ class JobsController extends Controller
             return redirect()->back()->with('error', 'Invalid job type selected');
         }
 
-        Job::create($request->validated());
+        $validatedData = $request->validated();
+        Job::create(array_merge($validatedData, ['user_id' => auth()->user()->id]));
 
         return redirect()->back()->with('success', 'Job created successfully 🎉');
 
     }
 
     public function jobLists(){
-        $jobs = Job::
-        return view('client.job_lists');
+        $jobs = Job::where('user_id', auth()->user()->id)->latest()->paginate(12);
+
+
+        return view('client.job_lists', ['jobs' => $jobs]);
     }
 }
