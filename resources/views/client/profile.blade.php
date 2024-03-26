@@ -21,8 +21,11 @@
                 <div class="col-lg-3">
                     <div class="card border-0 shadow mb-4 p-3">
                         <div class="s-body text-center mt-3">
-                            <img src="assets/assets/images/avatar7.png" alt="avatar" class="rounded-circle img-fluid"
-                                style="width: 150px;">
+                            <img src="{{ auth()->user()->image == '' ? asset('jobportal-template/assets/images/avatar7.png') : asset('uploads/avatars/' . auth()->user()->image) }}"
+                                alt="avatar" id="avatarImage" class="rounded-circle img-fluid"
+                                style="width: 150px; height: 150px">
+                            <input type="hidden" id="baseAvatarUrl" value="{{ asset('uploads/avatars/') }}">
+
                             <h5 class="mt-3 pb-0">{{ auth()->user()->name }}</h5>
                             <p class="text-muted mb-1 fs-6">{{ auth()->user()->designation }}</p>
                             <div class="d-flex justify-content-center mb-2">
@@ -151,14 +154,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="UpdateImageForm" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Profile Image</label>
+                            <label for="image" class="form-label">Profile Image</label>
                             <input type="file" class="form-control" id="image" name="image">
+                            <p id="imageErr" class="hide text-danger"></p>
                         </div>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary mx-3">Update</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" id="DismissBtn" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
                         </div>
 
                     </form>
@@ -169,4 +175,42 @@
 @endsection
 
 @section('javascript')
+    <script>
+        $('#UpdateImageForm').on('submit', function(e) {
+            e.preventDefault();
+
+
+            const formData = new FormData(this);
+
+            $.ajax({
+                url: "{{ route('profile.updateAvatar') }}",
+                type: 'post',
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function(response) {
+                    if (response.status == false) {
+                        $('#image').addClass('is-invalid');
+                        $('#imageErr').addClass('show').html(response.error);
+                    } else {
+
+                        $('#image').removeClass('is-invalid');
+                        $('#imageErr').removeClass('show').html('');
+
+                        $('#image').val('');
+
+                        if (response.status == true) {
+                            const baseUrl = $('#baseAvatarUrl').val();
+                            $('#avatarImage').attr('src', baseUrl + '/' + response.image);
+                            $('#DismissBtn').click();
+                        }
+
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+    </script>
 @endsection

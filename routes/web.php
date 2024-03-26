@@ -42,5 +42,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 
+    Route::post('/profile/update/image', [ProfileController::class, 'updateAvatar'])->name('profile.updateAvatar');
+
     
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -60,6 +61,41 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Password updated successfully');
+    }
 
+    public function updateAvatar(Request $request){
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|max:1024|mimes:png,jpg,webp,jpeg'
+        ]);
+        
+        if($validator->fails()){
+            return response()->json([
+                'status' => false,
+                'error' => $validator->errors()->first()
+            ]);
+        }
+        if($request->hasFile('image')){
+
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $newName = time() . auth()->user()->id . '.'.$ext;
+
+            $image->move(public_path('uploads/avatars/'), $newName);
+
+            $user = User::find(auth()->user()->id);
+            $oldImage = public_path('uploads/avatars/' . $user->image);
+            if($user->image != '' && file_exists($oldImage)){
+                File::delete($oldImage);
+            }
+
+            $user->image = $newName;
+            $user->save();
+
+            return response()->json([
+                'status' => true,
+                'success' => 'Avatar successfully updated',
+                'image' =>  $newName
+            ]);
+        }
     }
 }
