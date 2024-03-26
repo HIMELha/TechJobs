@@ -46,5 +46,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('/profile-update-image', [ProfileController::class, 'updateAvatar'])->name('profile.updateAvatar');
 
     Route::get('/post-new-job', [JobsController::class, 'createJob'])->name('createJob');
+    Route::post('/post-new-job', [JobsController::class, 'storeJob'])->name('storeJob');
+    Route::get('/my-jobs', [JobsController::class, 'jobLists'])->name('jobs.index');
     
 });
