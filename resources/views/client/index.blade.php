@@ -1,8 +1,10 @@
-@extends('client.app')
-
+@extends('client.layouts.app')
+@section('header')
+    <title>CareerVibe | Find Best Jobs</title>
+@endsection
 @section('content')
-<section class="section-0 lazy d-flex bg-image-style dark align-items-center " class=""
-        data-bg="assets/images/banner5.jpg">
+    <section class="section-0 lazy d-flex bg-image-style dark align-items-center " class=""
+        data-bg="{{ asset('jobportal-template/assets/images/banner5.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-xl-8">
@@ -462,8 +464,7 @@
         </div>
     </section>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Client\AuthController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::group(['middleware' => 'guest'], function () { 
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/verify/login', [AuthController::class, 'verifyLogin'])->name('login.verify');
+
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register/store', [AuthController::class, 'storeRegister'])->name('register.store');
+    
+    Route::get('/recover-password', [AuthController::class, 'forget'])->name('forget');
+    Route::post('/sent-recovery-mail', [AuthController::class, 'sentRecoveryMail'])->name('forget.sentRecoveryMail');
+    Route::get('/reset-password/{hash}', [AuthController::class, 'resetHash'])->name('password.hash');
+    Route::post('/reset-password/{hash}', [AuthController::class, 'resetPassword'])->name('password.reset');
+
+});
+
+
+
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/profile/update/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+
+    
 });

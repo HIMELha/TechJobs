@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en_AU" />
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>CareerVibe | Find Best Jobs</title>
-    <meta name="description" content="" />
+
+    @yield('header')
+
     <meta name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
     <meta name="HandheldFriendly" content="True" />
@@ -18,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
             <div class="container">
-                <a class="navbar-brand" href="index.html">JobSpreeks</a>
+                <a class="navbar-brand" href="{{ route('index') }}">TechJobs</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -27,14 +29,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-0 ms-sm-0 me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('index') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
                         </li>
                     </ul>
-                    <a class="btn btn-outline-primary me-2" href="login.html" type="submit">Login</a>
-                    <a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
+                    @auth
+                        <a class="btn btn-outline-primary me-2" href="{{ route('profile.index') }}">My Profile</a>
+                        <a class="btn btn-primary" href="post-job.html">Post a Job</a>
+                    @else
+                        <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-outline me-2" href="{{ route('register') }}">Register</a>
+                    @endauth
+
+
                 </div>
             </div>
         </nav>
@@ -47,6 +56,8 @@
             <p class="text-center text-white pt-3 fw-bold fs-6">© 2023 xyz company, all right reserved</p>
         </div>
     </footer>
+
+    @yield('javascript')
     <script src="{{ asset('jobportal-template/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('jobportal-template/assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>
     <script src="{{ asset('jobportal-template/assets/js/instantpages.5.1.0.min.js') }}"></script>
