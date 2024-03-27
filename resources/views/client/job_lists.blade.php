@@ -20,6 +20,7 @@
             <div class="row">
                 @include('client.sidebar')
                 <div class="col-lg-9">
+                    @include('client.alert')
                     <div class="card border-0 shadow mb-4 p-3">
                         <div class="card-body card-form">
                             <div class="d-flex justify-content-between">
@@ -53,11 +54,15 @@
                                                     <td>{{ date_format($job->created_at, 'd M Y') }}</td>
                                                     <td>130 Applications</td>
                                                     <td>
-                                                        {{-- @if ($job->status)
-                                                            
-                                                        @endif --}}
-                                                        <div class="job-status text-capitalize text-success">active</div>
-                                                        {{-- <div class="job-status text-capitalize text-warning">paused</div> --}}
+                                                        @if ($job->status)
+                                                            <div class="job-status text-capitalize text-success">active
+                                                            </div>
+                                                        @else
+                                                            <div class="job-status text-capitalize text-warning">paused
+                                                            </div>
+                                                        @endif
+
+
                                                     </td>
                                                     <td>
                                                         <div class="action-dots float-end">
@@ -66,15 +71,15 @@
                                                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                             </a>
                                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li><a class="dropdown-item" href="job-detail.html"> <i
+                                                                <li><a class="dropdown-item" href="{{ route('viewJob', $job->id) }}"> <i
                                                                             class="fa fa-eye" aria-hidden="true"></i>
                                                                         View</a>
                                                                 </li>
-                                                                <li><a class="dropdown-item" href="#"><i
+                                                                <li><a class="dropdown-item" href="{{ route('editJob', $job->id) }}"><i
                                                                             class="fa fa-edit" aria-hidden="true"></i>
                                                                         Edit</a>
                                                                 </li>
-                                                                <li><a class="dropdown-item" href="#"><i
+                                                                <li><a class="dropdown-item" href="{{ route('deleteJob', $job->id) }}"><i
                                                                             class="fa fa-trash" aria-hidden="true"></i>
                                                                         Remove</a></li>
                                                             </ul>
@@ -88,8 +93,12 @@
                                         </tbody>
                                     </table>
                                 @else
-                                    <h3>No Job posted yet</h3>
-                                    <a href="{{ route('createJob') }}" class="btn btn-primary m-2 mt-2">Post Job</a>
+                                    <div class="mt-3 mx-auto">
+                                        <h5 class="text-center ">No Job posted yet</h5>
+                                        <a href="{{ route('createJob') }}"
+                                            class="btn btn-primary m-2 mt-2 text-center d-block mx-auto "
+                                            style="width: 140px">Post Job</a>
+                                    </div>
                                 @endif
 
                             </div>

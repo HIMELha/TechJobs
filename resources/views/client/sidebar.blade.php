@@ -10,7 +10,7 @@
             @if (Route::currentRouteName() == 'profile.index')
                 <div class="d-flex justify-content-center mb-2">
                     <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
-                        class="btn btn-primary">Change Profile Picture</button>
+                        class="btn btn-info text-white">Change Profile Picture</button>
                 </div>
             @endif
 

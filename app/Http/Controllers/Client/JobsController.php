@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateJobRequest;
+use App\Http\Requests\UpdateJobRequest;
 use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobType;
@@ -45,5 +46,57 @@ class JobsController extends Controller
 
 
         return view('client.job_lists', ['jobs' => $jobs]);
+    }
+
+    public function show($id){
+        $job = Job::with(['category', 'job_type'])->find($id);
+
+        if(!$job){
+            return redirect()->back()->with('error', 'Job not found');
+        }
+
+        return view('client.view_job', ['job' => $job]);
+    }
+
+
+    public function editJob($id){
+        $job = Job::with(['category', 'job_type'])->find($id);
+
+        if(!$job){
+            return redirect()->back()->with('error', 'Job not found');
+        }
+
+        $categories = Category::where('status', true)->get();
+        $job_types = JobType::where('status', true)->get();
+
+        $data['categories'] = $categories;
+        $data['job_types'] = $job_types;
+        $data['job'] = $job;
+        return view('client.update_job', $data);
+    }
+
+    public function updateJob(UpdateJobRequest $request, $id){
+        $job = Job::find($id);
+
+        if(!$job){
+            return redirect()->route('jobs.index')->with('error', 'Job not found');
+        }
+
+        $validatedData = $request->validated();
+        $job->update($validatedData);
+
+        return redirect()->route('jobs.index')->with('success', 'Job updated successfully');
+    }
+
+    public function deleteJob($id){
+        $job = Job::find($id);
+
+        if(!$job){
+            return redirect()->route('jobs.index')->with('error', 'Job not found');
+        }
+
+        $job->delete();
+
+        return redirect()->route('jobs.index')->with('success', 'Job deleted successfully');
     }
 }

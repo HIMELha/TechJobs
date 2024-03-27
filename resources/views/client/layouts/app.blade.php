@@ -36,8 +36,8 @@
                         </li>
                     </ul>
                     @auth
-                        <a class="btn btn-outline-primary me-2" href="{{ route('profile.index') }}">My Profile</a>
-                        <a class="btn btn-primary" href="post-job.html">Post a Job</a>
+                        <a class="btn btn-outline-warning me-2" href="{{ route('profile.index') }}">My Profile</a>
+                        <a class="btn btn-info text-white" href="{{ route('createJob') }}">Post a Job</a>
                     @else
                         <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
                         <a class="btn btn-outline me-2" href="{{ route('register') }}">Register</a>

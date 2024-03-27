@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="card-footer  p-4">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-info text-white">Update</button>
                         </div>
                     </form>
 
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="card-footer  p-4">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-info text-white">Update</button>
                         </div>
                     </form>
                 </div>
@@ -123,7 +123,7 @@
                             <p id="imageErr" class="hide text-danger"></p>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary mx-3">Update</button>
+                            <button type="submit" class="btn btn-info text-white mx-3">Update</button>
                             <button type="button" id="DismissBtn" class="btn btn-secondary"
                                 data-bs-dismiss="modal">Close</button>
                         </div>

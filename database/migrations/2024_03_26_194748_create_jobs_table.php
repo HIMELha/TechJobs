@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('company_location');
             $table->string('company_website');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
