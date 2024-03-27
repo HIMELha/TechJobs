@@ -60,9 +60,13 @@
                     @foreach ($categories as $category)
                         <div class="col-lg-4 col-xl-3 col-md-6">
                             <div class="single_catagory">
-                                <a href="jobs.html" class="text-info">
-                                    <h4 class="pb-2">{{ $category->name }}</h4>
-                                </a>
+                                <form action="/find-jobs/">
+                                    <input type="text" name="category" value="{{ $category->id }}" hidden>
+
+                                    <button type="submit" style="border: none;"  class="btn btn-outline">
+                                        <h4 class="pb-2 text-info">{{ $category->name }}</h4>
+                                    </button>
+                                </form>
                                 <p class="mb-0"> <span>{{ $category->jobs->count() }}</span> Available position</p>
                             </div>
                         </div>
@@ -255,18 +259,17 @@
             <div class="row pt-5">
                 <div class="job_listing_area">
                     <div class="job_lists">
-                        <div class="row">
+                        <div class="row" style="row-gap: 25px">
                             @if ($jobs->isNotEmpty())
                                 @foreach ($jobs as $job)
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" >
                                         <div class="card border-0 p-3 shadow mb-4 d-flex flex-column h-100">
                                             <div class="card-body d-flex flex-column justify-contents-between">
                                                 <h3 class="border-0 fs-5 pb-2 mb-0">{{ $job->title }}</h3>
                                                 <p>{{ Str::words($job->description, 20, '...') }}</p>
                                                 <div class="bg-light p-3 border flex-grow-1">
                                                     <p class="mb-0">
-                                                        <span class="fw-bolder"><i
-                                                                class="fa fa-map-marker"></i></span>
+                                                        <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
                                                         <span class="ps-1">{{ $job->company_location }}</span>
                                                     </p>
                                                     <p class="mb-0">

@@ -36,13 +36,13 @@ class HomeController extends Controller
         $categories = Category::where('status', true)->latest()->paginate(10);
         $job_types = JobType::where('status', true)->latest()->paginate(10);
         $job_types = JobType::where('status', true)->latest()->paginate(10);
-        
-        if(isset($query)){
-            $data['keyword'] = $query->keywords;
-            $data['location'] = $query->location;
-            $data['category_f'] = $query->category;
-        }
-        
+
+        $data = [
+            'keyword' => $query->has('keywords') ? $query->keywords : '',
+            'location' => $query->has('location') ? $query->location : '',
+            'category_f' => $query->has('category') ? $query->category : ''
+        ];
+
         $data['jobs'] = $jobs;
         $data['job_types'] = $job_types;
         $data['categories'] = $categories;

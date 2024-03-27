@@ -74,7 +74,7 @@
                                 <a href="#" class="btn btn-success">Save</a>
                                 @auth
                                     @if ($job->user_id == auth()->user()->id)
-                                        <a href="{{ route('editJob', $job->id) }}" class="btn btn-primary">Edit Job</a>
+                                        <a href="{{ route('editJob', $job->id) }}" class="btn btn-dark">Edit Job</a>
                                     @else
                                         <a href="#" class="btn btn-info text-white">Apply</a>
                                     @endif
