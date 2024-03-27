@@ -216,7 +216,7 @@
                             </div>
                         </div>
                         <div class="card-footer  p-4">
-                            <button type="submit" class="btn btn-primary">Update Job</button>
+                            <button type="submit" class="btn btn-info text-white">Update Job</button>
                         </div>
                     </form>
 

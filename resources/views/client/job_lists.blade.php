@@ -28,7 +28,7 @@
                                     <h3 class="fs-4 mb-1">My Jobs</h3>
                                 </div>
                                 <div style="margin-top: -10px;">
-                                    <a href="{{ route('createJob') }}" class="btn btn-primary">Post a Job</a>
+                                    <a href="{{ route('createJob') }}" class="btn btn-info text-white">Post a Job</a>
                                 </div>
 
                             </div>
@@ -96,7 +96,7 @@
                                     <div class="mt-3 mx-auto">
                                         <h5 class="text-center ">No Job posted yet</h5>
                                         <a href="{{ route('createJob') }}"
-                                            class="btn btn-primary m-2 mt-2 text-center d-block mx-auto "
+                                            class="btn btn-info text-white m-2 mt-2 text-center d-block mx-auto "
                                             style="width: 140px">Post Job</a>
                                     </div>
                                 @endif
