@@ -11,7 +11,7 @@
                 <div class="col">
                     <nav aria-label="breadcrumb" class=" rounded-3 p-3">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="jobs.html"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            <li class="breadcrumb-item"><a href="{{ route('jobs.find') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
                                     &nbsp;Back to Jobs</a></li>
                         </ol>
                     </nav>
@@ -72,11 +72,16 @@
                             <div class="border-bottom"></div>
                             <div class="pt-3 text-end">
                                 <a href="#" class="btn btn-success">Save</a>
-                                @if ($job->user_id == auth()->user()->id)
-                                    <a href="{{ route('editJob', $job->id) }}" class="btn btn-primary">Edit Job</a>
+                                @auth
+                                    @if ($job->user_id == auth()->user()->id)
+                                        <a href="{{ route('editJob', $job->id) }}" class="btn btn-primary">Edit Job</a>
+                                    @else
+                                        <a href="#" class="btn btn-info text-white">Apply</a>
+                                    @endif
                                 @else
                                     <a href="#" class="btn btn-info text-white">Apply</a>
-                                @endif
+                                @endauth
+
                             </div>
                         </div>
                     </div>

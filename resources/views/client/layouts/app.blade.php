@@ -3,6 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('header')
 
@@ -32,7 +33,7 @@
                             <a class="nav-link" aria-current="page" href="{{ route('index') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('jobs.find') }}">Find Jobs</a>
                         </li>
                     </ul>
                     @auth
@@ -53,7 +54,8 @@
 
     <footer class="bg-dark py-3 bg-2">
         <div class="container">
-            <p class="text-center text-white pt-3 fw-bold fs-6"><a href="{{ route('index') }}">TechJobs</a> &copy; 2023-2024, all right reserved</p>
+            <p class="text-center text-white pt-3 fw-bold fs-6"><a href="{{ route('index') }}">TechJobs</a> &copy;
+                2023-2024, all right reserved</p>
         </div>
     </footer>
 

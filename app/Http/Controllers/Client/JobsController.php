@@ -22,13 +22,13 @@ class JobsController extends Controller
     }
 
     public function storeJob(CreateJobRequest $request){
-        $category = Category::find($request->category_id);
+        $category = Category::where('status', true)->find($request->category_id);
 
         if(!$category){
             return redirect()->back()->with('error', 'Invalid category selected');
         }
 
-        $job_types = JobType::find($request->job_type_id);
+        $job_types = JobType::where('status', true)->find($request->job_type_id);
         
         if(!$job_types){
             return redirect()->back()->with('error', 'Invalid job type selected');
@@ -48,15 +48,6 @@ class JobsController extends Controller
         return view('client.job_lists', ['jobs' => $jobs]);
     }
 
-    public function show($id){
-        $job = Job::with(['category', 'job_type'])->find($id);
-
-        if(!$job){
-            return redirect()->back()->with('error', 'Job not found');
-        }
-
-        return view('client.view_job', ['job' => $job]);
-    }
 
 
     public function editJob($id){
@@ -80,6 +71,18 @@ class JobsController extends Controller
 
         if(!$job){
             return redirect()->route('jobs.index')->with('error', 'Job not found');
+        }
+
+        $category = Category::where('status', true)->find($request->category_id);
+
+        if(!$category){
+            return redirect()->back()->with('error', 'Invalid category selected');
+        }
+
+        $job_types = JobType::where('status', true)->find($request->job_type_id);
+        
+        if(!$job_types){
+            return redirect()->back()->with('error', 'Invalid job type selected');
         }
 
         $validatedData = $request->validated();

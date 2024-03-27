@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/job-details/{id}', [HomeController::class, 'show'])->name('viewJob');
+Route::get('/find-jobs', [HomeController::class, 'jobs'])->name('jobs.find');
+
+Route::post('/get-jobs', [HomeController::class, 'getJobs'])->name('jobs.get');
 
 Route::group(['middleware' => 'guest'], function () { 
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -45,13 +49,14 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
     Route::post('/profile-update-image', [ProfileController::class, 'updateAvatar'])->name('profile.updateAvatar');
 
-    Route::get('/my-jobs', [JobsController::class, 'jobLists'])->name('jobs.index');
-    Route::get('/job-details/{id}', [JobsController::class, 'show'])->name('viewJob');
+    Route::get('/my-jobs', [JobsController::class, 'jobLists'])->name('jobs.index');    
 
     Route::get('/post-new-job', [JobsController::class, 'createJob'])->name('createJob');
     Route::post('/post-new-job', [JobsController::class, 'storeJob'])->name('storeJob');
     Route::get('/edit-job/{id}', [JobsController::class, 'editJob'])->name('editJob');
     Route::post('/update-job/{id}', [JobsController::class, 'updateJob'])->name('updateJob');
     Route::get('/delete-job/{id}', [JobsController::class, 'deleteJob'])->name('deleteJob');
+
+    
     
 });
