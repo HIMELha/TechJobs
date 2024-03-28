@@ -130,7 +130,7 @@
                             <div class="mb-4">
                                 <label for="" class="mb-2">Description<span class="req">*</span></label>
                                 <textarea
-                                    class="form-control @error('description')
+                                    class="form-control textarea @error('description')
                                             is-invalid
                                         @enderror"
                                     name="description" id="description" cols="5" rows="5" placeholder="Description"></textarea>
@@ -141,7 +141,7 @@
                             <div class="mb-4">
                                 <label for="" class="mb-2">Benefits</label>
                                 <textarea
-                                    class="form-control @error('benifits')
+                                    class="form-control textarea @error('benifits')
                                             is-invalid
                                         @enderror"
                                     name="benifits" id="benifits" cols="5" rows="5" placeholder="Benifits"></textarea>
@@ -152,7 +152,7 @@
                             <div class="mb-4">
                                 <label for="" class="mb-2">Responsibility</label>
                                 <textarea
-                                    class="form-control @error('responsibility')
+                                    class="form-control textarea @error('responsibility')
                                             is-invalid
                                         @enderror"
                                     name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"></textarea>
@@ -163,7 +163,7 @@
                             <div class="mb-4">
                                 <label for="" class="mb-2">Qualifications</label>
                                 <textarea
-                                    class="form-control @error('qualifications')
+                                    class="form-control textarea @error('qualifications')
                                             is-invalid
                                         @enderror"
                                     name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications"></textarea>
@@ -234,4 +234,8 @@
 @endsection
 
 @section('javascript')
+
+<script>
+    $('.textarea').trumbowyg();
+</script>
 @endsection

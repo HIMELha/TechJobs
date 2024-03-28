@@ -60,4 +60,28 @@ class JobApplicationController extends Controller
         
         return redirect()->back()->with('success', 'Job saved');
     }
+
+    public function deleteApplyJob($id){
+        $jobApplication = JobApplication::where('user_id', auth()->user()->id)->find($id);
+
+        if(!$jobApplication){
+            return redirect()->back()->with('error', 'Job application not found');
+        }
+
+        $jobApplication->delete();
+        return redirect()->back()->with('success', 'Job application deleted successfully');
+    }
+
+     
+
+    public function deleteSavedJob($id){
+        $savedJob = SavedJob::where('user_id', auth()->user()->id)->find($id);
+
+        if(!$savedJob){
+            return redirect()->back()->with('error', 'Job application not found');
+        }
+
+        $savedJob->delete();
+        return redirect()->back()->with('success', 'Job removed from save list');
+    }
 }

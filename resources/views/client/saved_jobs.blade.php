@@ -44,7 +44,7 @@
                                                         <div class="info1">{{ $aJob->job->company_location }}</div>
                                                     </td>
                                                     <td>{{ date_format($aJob->job->created_at, 'd M Y') }}</td>
-                                                    <td>130 Applications</td>
+                                                    <td>{{ $aJob->job->jobApplication->count() }} Applications</td>
                                                     <td>
                                                         <div class="job-status text-capitalize">active</div>
                                                     </td>
@@ -58,7 +58,7 @@
                                                                 <li><a class="dropdown-item" href="{{ route('viewJob', $aJob->job->id) }}"> <i
                                                                             class="fa fa-eye" aria-hidden="true"></i>
                                                                         View</a></li>
-                                                                <li><a class="dropdown-item" href="#"><i
+                                                                <li><a class="dropdown-item" href="{{ route('jobs.saved.delete', $aJob->id) }}"><i
                                                                             class="fa fa-trash" aria-hidden="true"></i>
                                                                         Remove</a></li>
                                                             </ul>

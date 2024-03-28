@@ -125,7 +125,7 @@
 
                             <div class="mb-4">
                                 <label for="" class="mb-2">Description<span class="req">*</span></label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
+                                <textarea class="form-control textarea  @error('description') is-invalid @enderror" name="description" id="description"
                                     cols="5" rows="5" placeholder="Description"> {{ $job->description }} </textarea>
                                 @error('description')
                                     <p class="text-danger">{{ $message }}</p>
@@ -133,7 +133,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Benefits</label>
-                                <textarea class="form-control @error('benifits') is-invalid @enderror" name="benifits" id="benifits" cols="5"
+                                <textarea class="form-control textarea @error('benifits') is-invalid @enderror" name="benifits" id="benifits" cols="5"
                                     rows="5" placeholder="Benifits"> {{ $job->benifits }} </textarea>
                                 @error('benifits')
                                     <p class="text-danger">{{ $message }}</p>
@@ -141,7 +141,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Responsibility</label>
-                                <textarea value="{{ $job->responsibility }}" class="form-control @error('responsibility') is-invalid @enderror"
+                                <textarea value="{{ $job->responsibility }}" class="form-control textarea @error('responsibility') is-invalid @enderror"
                                     name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"> {{ $job->responsibility }} </textarea>
                                 @error('responsibility')
                                     <p class="text-danger">{{ $message }}</p>
@@ -149,7 +149,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Qualifications</label>
-                                <textarea value="{{ $job->qualifications }}" class="form-control @error('qualifications') is-invalid @enderror"
+                                <textarea value="{{ $job->qualifications }}" class="form-control textarea @error('qualifications') is-invalid @enderror"
                                     name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications">{{ $job->qualifications }}</textarea>
                                 @error('qualifications')
                                     <p class="text-danger">{{ $message }}</p>
@@ -206,8 +206,10 @@
                                 <label for="Status" class="mb-2">Status<span class="req">*</span></label>
                                 <select id="status" name="status"
                                     class="form-select @error('status') is-invalid @enderror">
-                                    <option value="{{ $job->status }}" {{ $job->status == false ? 'selected' : '' }}>Paused</option>
-                                    <option value="{{ $job->status }}" {{ $job->status == true ? 'selected' : '' }}>Active</option>
+                                    <option value="{{ $job->status }}" {{ $job->status == false ? 'selected' : '' }}>
+                                        Paused</option>
+                                    <option value="{{ $job->status }}" {{ $job->status == true ? 'selected' : '' }}>
+                                        Active</option>
 
                                 </select>
                                 @error('status')
@@ -226,4 +228,7 @@
 @endsection
 
 @section('javascript')
+    <script>
+        $('.textarea').trumbowyg();
+    </script>
 @endsection

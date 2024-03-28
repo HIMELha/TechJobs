@@ -52,7 +52,7 @@
                                                         <div class="info1">{{ $job->category->name }} . Noida</div>
                                                     </td>
                                                     <td>{{ date_format($job->created_at, 'd M Y') }}</td>
-                                                    <td>130 Applications</td>
+                                                    <td>{{ $job->jobApplication->count() }} Applications</td>
                                                     <td>
                                                         @if ($job->status)
                                                             <div class="job-status text-capitalize text-success">active
