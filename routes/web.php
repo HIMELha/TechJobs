@@ -59,6 +59,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
 
     Route::post('/apply-job/{id}', [JobApplicationController::class, 'applyJob'])->name('jobs.apply');
+    Route::get('/save-job/{id}', [JobApplicationController::class, 'saveJob'])->name('jobs.save');
     
     
 });

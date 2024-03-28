@@ -48,8 +48,6 @@ class JobsController extends Controller
         return view('client.job_lists', ['jobs' => $jobs]);
     }
 
-
-
     public function editJob($id){
         $job = Job::with(['category', 'job_type'])->find($id);
 
@@ -102,4 +100,6 @@ class JobsController extends Controller
 
         return redirect()->route('jobs.index')->with('success', 'Job deleted successfully');
     }
+
+    
 }

@@ -11,8 +11,8 @@
                 <div class="col">
                     <nav aria-label="breadcrumb" class=" rounded-3 p-3">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="{{ route('jobs.find') }}" class="text-info"><i class="fa fa-arrow-left"
-                                        aria-hidden="true"></i>
+                            <li class="breadcrumb-item"><a href="{{ route('jobs.find') }}" class="text-info"><i
+                                        class="fa fa-arrow-left" aria-hidden="true"></i>
                                     &nbsp;Back to Jobs</a></li>
                         </ol>
                     </nav>
@@ -44,8 +44,19 @@
                                 </div>
                                 <div class="jobs_right">
                                     <div class="apply_now">
-                                        <a class="heart_mark border border-info" href="#"> <i class="fa fa-heart-o "
-                                                aria-hidden="true"></i></a>
+                                        @if ($isJobSaved)
+                                            <a class="heart_mark border border-info"
+                                                style="background-color: #00D363; color: white"
+                                                href="{{ route('jobs.save', $job->id) }}">
+                                                <i class="fa fa-heart-o " aria-hidden="true"></i>
+                                            </a>
+                                        @else
+                                            <a class="heart_mark border border-info"
+                                                href="{{ route('jobs.save', $job->id) }}">
+                                                <i class="fa fa-heart-o " aria-hidden="true"></i>
+                                            </a>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +133,8 @@
                                 <ul>
                                     <li>Name: <span>{{ $job->company_name }}</span></li>
                                     <li>Locaion: <span>{{ $job->company_location }}</span></li>
-                                    <li>Webite: <a href="{{ $job->company_website }}" class="text-info">{{ $job->company_website }}</a></li>
+                                    <li>Webite: <a href="{{ $job->company_website }}"
+                                            class="text-info">{{ $job->company_website }}</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
+use App\Models\SavedJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -28,8 +29,8 @@ class HomeController extends Controller
         if(!$job){
             return redirect()->back()->with('error', 'Job not found');
         }
-
-        return view('client.view_job', ['job' => $job]);
+        $isJobSaved = SavedJob::where(['user_id' => auth()->user()->id, 'job_id' => $id])->first();
+        return view('client.view_job', ['job' => $job, 'isJobSaved' => $isJobSaved]);
     }
 
     public function jobs(Request $query){

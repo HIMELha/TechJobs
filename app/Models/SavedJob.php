@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class SavedJob extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'job_id',
+        'user_id'
+    ];
 }
