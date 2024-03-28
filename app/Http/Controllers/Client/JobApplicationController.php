@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendMailJob;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\SavedJob;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Queue;
 
 class JobApplicationController extends Controller
 {
@@ -29,6 +31,12 @@ class JobApplicationController extends Controller
             'employer_id' => $job->user_id,
             'applied_date' => Carbon::now()
         ]);
+
+        $employer = $jobApplication->employer;
+        $title = $job->title;
+
+        // have to work here 
+        Queue::later(now(), new SendMailJob($employer, $title));
 
         return redirect()->back()->with('success', 'Job Application created successfully');
     }

@@ -29,7 +29,11 @@ class HomeController extends Controller
         if(!$job){
             return redirect()->back()->with('error', 'Job not found');
         }
-        $isJobSaved = SavedJob::where(['user_id' => auth()->user()->id, 'job_id' => $id])->first();
+        $isJobSaved = [];
+        if(auth()->check()){
+            $isJobSaved = SavedJob::where(['user_id' => auth()->user()->id, 'job_id' => $id])->first();
+        }
+    
         return view('client.view_job', ['job' => $job, 'isJobSaved' => $isJobSaved]);
     }
 

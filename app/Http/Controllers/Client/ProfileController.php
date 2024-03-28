@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\JobApplication;
+use App\Models\SavedJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -98,4 +100,18 @@ class ProfileController extends Controller
             ]);
         }
     }
+
+    public function appliedJobs(){
+        $appliedJobs = JobApplication::with('job')->where(['user_id' => auth()->user()->id])->paginate(12);
+        
+        return view('client.my_applied_jobs', ['appliedJobs' => $appliedJobs]);
+    }
+
+    public function savedJobs(){
+        $savedJobs = SavedJob::with('job')->where(['user_id' => auth()->user()->id])->paginate(12);
+        
+        return view('client.saved_jobs', ['savedJobs' => $savedJobs]);
+    }
+
+     
 }

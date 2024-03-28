@@ -50,6 +50,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('/profile-update-image', [ProfileController::class, 'updateAvatar'])->name('profile.updateAvatar');
 
     Route::get('/my-jobs', [JobsController::class, 'jobLists'])->name('jobs.index');    
+    Route::get('/applied-jobs/{id?}', [ProfileController::class, 'appliedJobs'])->name('jobs.applied');
+    Route::get('/saved-jobs/{id?}', [ProfileController::class, 'savedJobs'])->name('jobs.saved');
 
     Route::get('/post-new-job', [JobsController::class, 'createJob'])->name('createJob');
     Route::post('/post-new-job', [JobsController::class, 'storeJob'])->name('storeJob');

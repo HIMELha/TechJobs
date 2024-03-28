@@ -44,18 +44,25 @@
                                 </div>
                                 <div class="jobs_right">
                                     <div class="apply_now">
-                                        @if ($isJobSaved)
-                                            <a class="heart_mark border border-info"
-                                                style="background-color: #00D363; color: white"
-                                                href="{{ route('jobs.save', $job->id) }}">
-                                                <i class="fa fa-heart-o " aria-hidden="true"></i>
-                                            </a>
+                                        @auth
+                                            @if ($isJobSaved)
+                                                <a class="heart_mark border border-info"
+                                                    style="background-color: #00D363; color: white"
+                                                    href="{{ route('jobs.save', $job->id) }}">
+                                                    <i class="fa fa-heart-o " aria-hidden="true"></i>
+                                                </a>
+                                            @else
+                                                <a class="heart_mark border border-info"
+                                                    href="{{ route('jobs.save', $job->id) }}">
+                                                    <i class="fa fa-heart-o " aria-hidden="true"></i>
+                                                </a>
+                                            @endif
                                         @else
-                                            <a class="heart_mark border border-info"
-                                                href="{{ route('jobs.save', $job->id) }}">
+                                            <a class="heart_mark border border-info" href="{{ route('jobs.save', $job->id) }}">
                                                 <i class="fa fa-heart-o " aria-hidden="true"></i>
                                             </a>
-                                        @endif
+                                        @endauth
+
 
                                     </div>
                                 </div>

@@ -52,10 +52,13 @@
 
     @yield('content')
 
-    <footer class="bg-dark py-3 bg-2">
-        <div class="container">
+    <footer class="bg-success py-3 bg-2">
+        <div class="container d-flex justify-content-between align-items-center">
             <p class="text-center text-white pt-3 fw-bold fs-6"><a href="{{ route('index') }}">TechJobs</a> &copy;
                 2023-2024, all right reserved</p>
+
+            <p class="text-center text-white pt-3 fw-bold fs-6"> Developed by <a
+                    href="https://webhimel.vercel.app">Himel Hasan</a></p>
         </div>
     </footer>
 
