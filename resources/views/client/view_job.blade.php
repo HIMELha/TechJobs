@@ -11,7 +11,8 @@
                 <div class="col">
                     <nav aria-label="breadcrumb" class=" rounded-3 p-3">
                         <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item"><a href="{{ route('jobs.find') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            <li class="breadcrumb-item"><a href="{{ route('jobs.find') }}" class="text-info"><i class="fa fa-arrow-left"
+                                        aria-hidden="true"></i>
                                     &nbsp;Back to Jobs</a></li>
                         </ol>
                     </nav>
@@ -21,13 +22,14 @@
         <div class="container job_details_area">
             <div class="row pb-5">
                 <div class="col-md-8">
+                    @include('client.alert')
                     <div class="card shadow border-0">
                         <div class="job_details_header">
                             <div class="single_jobs white-bg d-flex justify-content-between">
                                 <div class="jobs_left d-flex align-items-center">
 
                                     <div class="jobs_conetent">
-                                        <a href="{{ route('viewJob', $job->id) }}">
+                                        <a href="{{ route('viewJob', $job->id) }}" class="text-info">
                                             <h4>{{ $job->title }}</h4>
                                         </a>
                                         <div class="links_locat d-flex align-items-center">
@@ -42,7 +44,7 @@
                                 </div>
                                 <div class="jobs_right">
                                     <div class="apply_now">
-                                        <a class="heart_mark" href="#"> <i class="fa fa-heart-o"
+                                        <a class="heart_mark border border-info" href="#"> <i class="fa fa-heart-o "
                                                 aria-hidden="true"></i></a>
                                     </div>
                                 </div>
@@ -76,10 +78,18 @@
                                     @if ($job->user_id == auth()->user()->id)
                                         <a href="{{ route('editJob', $job->id) }}" class="btn btn-dark">Edit Job</a>
                                     @else
-                                        <a href="#" class="btn btn-info text-white">Apply</a>
+                                        <form style="display: inline-block" action="{{ route('jobs.apply', $job->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-info text-white">Apply</button>
+                                        </form>
                                     @endif
                                 @else
-                                    <a href="#" class="btn btn-info text-white">Apply</a>
+                                    <form style="display: inline-block" action="{{ route('jobs.apply', $job->id) }}"
+                                        method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-info text-white">Apply</button>
+                                    </form>
                                 @endauth
 
                             </div>
@@ -112,7 +122,7 @@
                                 <ul>
                                     <li>Name: <span>{{ $job->company_name }}</span></li>
                                     <li>Locaion: <span>{{ $job->company_location }}</span></li>
-                                    <li>Webite: <a href="{{ $job->company_website }}">{{ $job->company_website }}</a></li>
+                                    <li>Webite: <a href="{{ $job->company_website }}" class="text-info">{{ $job->company_website }}</a></li>
                                 </ul>
                             </div>
                         </div>

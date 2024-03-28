@@ -4,6 +4,7 @@ use App\Http\Controllers\Client\AuthController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\JobsController;
 use App\Http\Controllers\Client\ProfileController;
+use App\Http\Controllers\Client\JobApplicationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/job-details/{id}', [HomeController::class, 'show'])->name('viewJob');
 Route::get('/find-jobs', [HomeController::class, 'jobs'])->name('jobs.find');
-
 Route::post('/get-jobs', [HomeController::class, 'getJobs'])->name('jobs.get');
 
 Route::group(['middleware' => 'guest'], function () { 
@@ -57,6 +57,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
     Route::post('/update-job/{id}', [JobsController::class, 'updateJob'])->name('updateJob');
     Route::get('/delete-job/{id}', [JobsController::class, 'deleteJob'])->name('deleteJob');
 
+
+    Route::post('/apply-job/{id}', [JobApplicationController::class, 'applyJob'])->name('jobs.apply');
     
     
 });
