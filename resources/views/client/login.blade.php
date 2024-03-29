@@ -28,7 +28,7 @@
                                 @enderror
                             </div>
                             <div class="justify-content-between d-flex">
-                                <button type="submit" class="btn btn-primary mt-2">Login</button>
+                                <button type="submit" class="btn btn-info text-white mt-2">Login</button>
                                 <a href="{{ route('forget') }}" class="mt-3">Forgot Password?</a>
                             </div>
                         </form>
