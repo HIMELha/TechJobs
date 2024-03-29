@@ -15,7 +15,7 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
+        @include('admin.includes.sidebar')
         <section class="section dashboard">
             <div class="row">
 
