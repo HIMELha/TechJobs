@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
+use App\Models\Page;
 use App\Models\SavedJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -127,5 +128,15 @@ class HomeController extends Controller
         ], 200);
     }
 
+
+    public function pages($title){
+        $pagee = Page::where('title', $title)->first();
+
+        if(!$pagee){
+            return redirect()->back()->withError('Page not found');
+        }
+
+        return view('client.page', compact('pagee'));
+    }
 
 }

@@ -53,15 +53,34 @@
 
     @yield('content')
 
-    <footer class="bg-success py-3 bg-2">
-        <div class="container d-flex justify-content-between align-items-center">
-            <p class="text-center text-white pt-3 fw-bold fs-6"><a href="{{ route('index') }}">TechJobs</a> &copy;
-                2023-2024, all right reserved</p>
-
-            <p class="text-center text-white pt-3 fw-bold fs-6"> Developed by <a
-                    href="https://webhimel.vercel.app">Himel Hasan</a></p>
+    <footer class=" py-3 bg-2" style="background-color: rgb(32, 186, 233)">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+                        <a class="text-white fw-bold fs-6 me-3" href="{{ route('index') }}">Home</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="{{ route('pages.view', 'About') }}">About</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="{{ route('pages.view', 'Contact') }}">Contact</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="{{ route('pages.view', 'FAQ') }}">FAQ</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="{{ route('profile.index') }}">Account</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="{{ route('jobs.find') }}">Find Jobs</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="">Community</a>
+                        <a class="text-white fw-bold fs-6" href="https://www.facebook.com/webhimel032">Facebook</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white pt-3 fw-bold fs-6 mb-0">
+                        <a href="{{ route('index') }}">TechJobs</a> &copy; 2023-2024, all rights reserved
+                    </p>
+                    <p class="text-white pt-1 fw-bold fs-6 mb-0">
+                        Developed by <a href="https://webhimel.vercel.app">Himel Hasan</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
+
+
 
     <script src="{{ asset('jobportal-template/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('jobportal-template/assets/js/bootstrap.bundle.5.1.3.min.js') }}"></script>

@@ -23,6 +23,8 @@ Route::get('/job-details/{id}', [HomeController::class, 'show'])->name('viewJob'
 Route::get('/find-jobs', [HomeController::class, 'jobs'])->name('jobs.find');
 Route::post('/get-jobs', [HomeController::class, 'getJobs'])->name('jobs.get');
 
+Route::get('/pages/{title}', [HomeController::class, 'pages'])->name('pages.view');
+
 Route::group(['middleware' => 'guest'], function () { 
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/verify/login', [AuthController::class, 'verifyLogin'])->name('login.verify');
