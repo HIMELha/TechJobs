@@ -49,12 +49,12 @@
                                                     <th scope="row">{{ $user->id }}</th>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->id }}</td>
-                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->jobs->count() }}</td>
+                                                    <td>{{ $user->jobApplications->count() }}</td>
                                                     <td>
                                                         <a href="{{ route('adminjobs.edit', $user->id) }}"
-                                                            class="btn btn-sm btn-success">Edit</a>
-                                                        <a href="{{ route('adminjobs.destroy', $user->id) }}"
+                                                            class="btn btn-sm btn-success">View profile</a>
+                                                        <a href="{{ route('admin.usersdestroy', $user->id) }}"
                                                             class="btn btn-sm btn-danger">Delete</a>
                                                     </td>
                                                 </tr>

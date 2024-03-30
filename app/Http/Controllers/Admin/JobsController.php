@@ -18,8 +18,8 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs = Job::with(['user', 'category', 'jobApplication'])->paginate(12);
-        
+        $jobs = Job::latest()->with(['user', 'category', 'jobApplication'])->paginate(12);
+
         return view('admin.jobs', compact('jobs'));
     }
 

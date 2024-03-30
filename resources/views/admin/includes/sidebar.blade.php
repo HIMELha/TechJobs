@@ -75,7 +75,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-blank.html">
+            <a class="nav-link {{ Route::currentRouteName() == 'admin.settings' ? '' : 'collapsed' }}" href="{{ route('admin.settings') }}">
                 <i class="bi bi-gear"></i>
                 <span>Setting</span>
             </a>
