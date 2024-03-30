@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Update Category</h5>
 
-                            <form action="{{ route('category.update', $category->id) }}" method="POST" class="row g-3">
+                            <form action="{{ route('category.updatee', $category->id) }}" method="POST" class="row g-3">
                                 @csrf
                                 <div class="col-md-12">
                                     <label for="category" class="form-label">Category name</label>

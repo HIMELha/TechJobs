@@ -25,10 +25,10 @@
   <link href="{{ asset('niceadmin/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
   <link href="{{ asset('niceadmin/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('niceadmin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
-
+  
   <!-- Template Main CSS File -->
   <link href="{{ asset('niceadmin/assets/css/style.css') }}" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css">
 </head>
 
 <body>
@@ -225,10 +225,11 @@
   <script src="{{ asset('niceadmin/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
   <script src="{{ asset('niceadmin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
   <script src="{{ asset('niceadmin/assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ asset('jobportal-template/assets/js/jquery-3.6.0.min.js') }}"></script>
 
   <!-- Template Main JS File -->
   <script src="{{ asset('niceadmin/assets/js/main.js') }}"></script>
-
+  
   @yield('javascript')
 
 </body>

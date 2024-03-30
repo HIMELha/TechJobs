@@ -13,7 +13,7 @@
                     <li class="breadcrumb-item active">Categories</li>
                 </ol>
             </nav>
-        </div><!-- End Page Title -->
+        </div>
         @include('admin.includes.sidebar')
 
         <section class="section">
@@ -26,7 +26,7 @@
                                 <div class="alert alert-success mt-2">{{ Session::get('success') }}</div>
                             @endif
                             @if (Session::has('error'))
-                                <div class="alert alert-error mt-2">{{ Session::get('success') }}</div>
+                                <div class="alert alert-error mt-2">{{ Session::get('error') }}</div>
                             @endif
                             <h5 class="card-title">Categories</h5>
 
@@ -54,7 +54,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('category.edit', $category->id) }}" class="btn btn-sm btn-success">Edit</a>
-                                                    <a href="{{ route('category.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                                                    <a href="{{ route('admincategory.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -92,7 +92,7 @@
                     </div>
                 </div>
         </section>
-    </main><!-- End #main -->
+    </main>
 @endsection
 
 @section('javascript')
