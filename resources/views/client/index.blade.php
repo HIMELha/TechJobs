@@ -7,10 +7,14 @@
         data-bg="{{ asset('jobportal-template/assets/images/banner5.jpg') }}">
         <div class="container">
             <div class="row">
+                @php
+                    $setting = \App\Models\Setting::first();
+                @endphp
                 <div class="col-12 col-xl-8">
-                    <h1>Find your dream job</h1>
-                    <p>Thounsands of jobs available.</p>
-                    <div class="banner-btn mt-5"><a href="#" class="btn btn-success mb-4 mb-sm-0">Explore Now</a>
+                    <h1>{{ $setting->site_hero_title }}</h1>
+                    <p>{{ $setting->site_hero_desc }}</p>
+                    <div class="banner-btn mt-5"><a href="{{ route('jobs.find') }}" class="btn btn-info text-white mb-4 mb-sm-0">Explore
+                            Jobs</a>
                     </div>
                 </div>
             </div>

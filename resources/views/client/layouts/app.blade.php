@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ route('jobs.find') }}">Find Jobs</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ route('employers') }}">Explore employers</a>
+                        </li>
                     </ul>
                     @auth
                         <a class="btn btn-outline-warning me-2" href="{{ route('profile.index') }}">My Profile</a>
@@ -64,7 +67,7 @@
                         <a class="text-white fw-bold fs-6 me-3" href="{{ route('pages.view', 'FAQ') }}">FAQ</a>
                         <a class="text-white fw-bold fs-6 me-3" href="{{ route('profile.index') }}">Account</a>
                         <a class="text-white fw-bold fs-6 me-3" href="{{ route('jobs.find') }}">Find Jobs</a>
-                        <a class="text-white fw-bold fs-6 me-3" href="">Community</a>
+                        <a class="text-white fw-bold fs-6 me-3" href="https://www.facebook.com/webhimel032">Community</a>
                         <a class="text-white fw-bold fs-6" href="https://www.facebook.com/webhimel032">Facebook</a>
                     </div>
                 </div>

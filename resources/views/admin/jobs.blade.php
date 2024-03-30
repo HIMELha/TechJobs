@@ -58,7 +58,7 @@
                                                             class="badge {{ $job->status == true ? 'bg-info' : 'bg-danger' }}">
                                                             {{ $job->status == true ? 'Active' : 'Pending' }}</p>
                                                     </td>
-                                                    <td>
+                                                    <td class="d-flex gap-1">
                                                         <a href="{{ route('adminjobs.edit', $job->id) }}"
                                                             class="btn btn-sm btn-success">Edit</a>
                                                         <a href="{{ route('adminjobs.destroy', $job->id) }}"

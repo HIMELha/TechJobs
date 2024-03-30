@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Client\AuthController;
+use App\Http\Controllers\Client\EmployerController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\JobsController;
 use App\Http\Controllers\Client\ProfileController;
@@ -24,6 +25,8 @@ Route::get('/find-jobs', [HomeController::class, 'jobs'])->name('jobs.find');
 Route::post('/get-jobs', [HomeController::class, 'getJobs'])->name('jobs.get');
 
 Route::get('/pages/{title}', [HomeController::class, 'pages'])->name('pages.view');
+Route::get('/employers', [EmployerController::class, 'index'])->name('employers');
+Route::get('/employer/profile/{id}', [EmployerController::class, 'viewProfile'])->name('employers.view');
 
 Route::group(['middleware' => 'guest'], function () { 
     Route::get('/login', [AuthController::class, 'login'])->name('login');

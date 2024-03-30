@@ -54,7 +54,7 @@
                                                             class="badge {{ $page->status == true ? 'bg-info' : 'bg-danger' }}">
                                                             {{ $page->status == true ? 'Active' : 'Pending' }}</p>
                                                     </td>
-                                                    <td>
+                                                    <td class="d-flex gap-1">
                                                         <a href="{{ route('pages.edit', $page->id) }}"
                                                             class="btn btn-sm btn-success">Edit</a>
                                                         <a href="{{ route('pages.pageDestroy', $page->id) }}"
