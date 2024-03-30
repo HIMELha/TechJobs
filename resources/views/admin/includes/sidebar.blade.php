@@ -68,7 +68,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
+            <a class="nav-link {{ Route::currentRouteName() == 'pages.index' ? '' : 'collapsed' }}" href="{{ route('pages.index') }}">
                 <i class="bi bi-journal-text"></i>
                 <span>Pages</span>
             </a>
