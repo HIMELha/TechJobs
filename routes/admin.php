@@ -48,6 +48,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/settings', [SettingsController::class, 'index'])->name('admin.settings');
         Route::post('/settings/update/password', [SettingsController::class, 'updatePassword'])->name('admin.updatePassword');
+        Route::post('/settings/update/settings', [SettingsController::class, 'updateSetting'])->name('admin.updateSetting');
     });
 
 });
