@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->text('banner_image')->after('email')->default('');
             $table->text('about')->after('mobile')->default('');
             $table->text('education')->after('mobile')->default('');
@@ -30,7 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('about');
             $table->dropColumn('banner_image');
             $table->dropColumn('education');

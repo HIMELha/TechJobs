@@ -8,20 +8,22 @@
     <section class="section-5 bg-2">
         <div class="container py-5">
             <div class="row">
-                <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
                     <nav aria-label="breadcrumb" class=" rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                             <li class="breadcrumb-item active">Account Settings</li>
                         </ol>
                     </nav>
+                    <a href="{{ route('employers.view', auth()->user()->id) }}" class="btn btn-sm btn-info text-white mb-4">View as</a>
                 </div>
             </div>
             <div class="row">
                 @include('client.sidebar')
                 <div class="col-lg-9">
                     @include('client.alert')
-                    <form action="{{ route('profile.update') }}" method="POST" class="card border-0 shadow mb-4">
+                    <form action="{{ route('profile.update') }}" method="POST" class="card border-0 shadow mb-4"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card-body row p-4">
                             <h3 class="fs-4 mb-1">My Profile</h3>
@@ -55,15 +57,22 @@
                             <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Mobile* <span class="text-info "
                                         style="font-size: 13px">(start with country code)</span></label>
-                                <input type="text" placeholder="+880 1743433433" name="mobile"
+                                <input type="number" placeholder="+880 1743433433" name="mobile"
                                     value="{{ auth()->user()->mobile }}" value="{{ old('mobile') }}"
                                     class="form-control @error('mobile') is-invalid @enderror">
                                 @error('mobile')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            @if (auth()->user()->banner_image)
+                                <div class="mb-2">
+                                    <img src="{{ asset('uploads/banners/' . auth()->user()->banner_image) }}"
+                                        alt="{{ auth()->user()->name }}">
+                                </div>
+                            @endif
                             <div class="mb-4">
-                                <label for="" class="mb-2">Banner Image</label>
+                                <label for="" class="mb-2">Banner Image <span class="text-danger"
+                                        style="font-size: 13px">Required size 900x300</span></label>
                                 <input type="file" name="banner_image"
                                     class="form-control @error('banner_image') is-invalid @enderror">
                                 @error('banner_image')
@@ -165,7 +174,8 @@
                         </div>
                     </form>
 
-                    <form action="{{ route('profile.updatePassword') }}" method="POST" class="card border-0 shadow mb-4">
+                    <form action="{{ route('profile.updatePassword') }}" method="POST"
+                        class="card border-0 shadow mb-4">
                         @csrf
 
                         <div class="card-body p-4">

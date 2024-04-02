@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <section class="section-3 py-5 bg-2 ">
-        <div class="container">
+        <form action="{{ route('employers') }}" method="GET" class="container">
             <div class="row">
                 <div class="col-6 col-md-10 ">
                     <h2>Explore employers</h2>
@@ -12,8 +12,8 @@
                 <div class="col-6 col-md-2">
                     <div class="align-end">
                         <select name="sort" id="sort" class="form-select">
-                            <option value="latest">Latest</option>
-                            <option value="oldest">Oldest</option>
+                            <option value="latest" {{ $sort == 'latest' ? 'selected' : '' }}>Latest</option>
+                            <option value="oldest" {{ $sort == 'oldest' ? 'selected' : '' }}>Oldest</option>
                         </select>
                     </div>
                 </div>
@@ -23,61 +23,19 @@
                 <div class="col-md-4 col-lg-3 sidebar mb-4">
                     <div class="card border-0 shadow p-4">
                         <div class="mb-4">
-                            <h2>Keywords</h2>
-                            <input type="text" placeholder="Keywords" value="{{ $keyword ?? $keyword }}" id="keywords"
+                            <h2>Name or keywords</h2>
+                            <input type="text" placeholder="keywords" name="keywords" value="{{ $keyword ?? $keyword }}" id="keywords"
                                 class="form-control">
                         </div>
 
                         <div class="mb-4">
                             <h2>Location</h2>
-                            <input type="text" placeholder="Location" id="location" value="{{ $location ?? $location }}"
+                            <input type="text" placeholder="Location" id="location" name="location" value="{{ $location ?? $location }}"
                                 class="form-control">
                         </div>
-
-                        {{-- <div class="mb-4">
-                            <h2>Category</h2>
-                            <select name="category" id="category" class="form-select">
-                                <option value="">Select a Category</option>
-                                @if ($categories->isNotEmpty())
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category_f == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-                                    @endforeach
-                                @else
-                                    <option value="" disabled>No Categories available</option>
-                                @endif
-                            </select>
-                        </div>
-
                         <div class="mb-4">
-                            <h2>Job Type</h2>
-                            @if ($job_types->isNotEmpty())
-                                <div id="jobTypes">
-                                    @foreach ($job_types as $type)
-                                        <div class="form-check mb-2">
-                                            <input class="form-check-input " name="job_type" type="checkbox"
-                                                value="{{ $type->id }}" id="job_type_{{ $type->id }}">
-                                            <label class="form-check-label "
-                                                for="job_type_{{ $type->id }}">{{ $type->name }}</label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @else
-                                <div class="form-check mb-2">
-                                    <label class="form-check-label">No types avaialble</label>
-                                </div>
-                            @endif
-
+                            <button type="submit" class="btn btn-info text-white">Find employer</button>
                         </div>
-
-                        <div class="mb-4">
-                            <h2>Experience</h2>
-                            <select name="experience" id="experience" class="form-select">
-                                <option value="">Select Experience</option>
-                                @for ($exp = 1; $exp <= 9; $exp++)
-                                    <option value="{{ $exp }}">{{ $exp }} Year</option>
-                                @endfor
-                            </select>
-                        </div> --}}
                     </div>
                 </div>
 
@@ -117,7 +75,7 @@
                                     @endforeach
                                 @else
                                     <div class="col-12 mt-5">
-                                        <h5 style="text-align: center"> No Jobs available </h5>
+                                        <h5 style="text-align: center"> No employer available </h5>
                                     </div>
                                 @endif
 
@@ -129,7 +87,7 @@
                 </div>
 
             </div>
-        </div>
+        </form>
     </section>
 @endsection
 

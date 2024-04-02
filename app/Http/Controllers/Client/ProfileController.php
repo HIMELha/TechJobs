@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JobApplication;
 use App\Models\SavedJob;
 use App\Models\User;
+use App\Rules\ImageSize;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -23,8 +24,7 @@ class ProfileController extends Controller
             'email' => 'required|email|max:50|unique:users,email,' . auth()->user()->id . ',id',
             'designation' => 'required|max:255',
             'mobile' => 'required|min:10|max:20',
-            // Add your additional validations for the new columns here
-            'banner_image' => 'required|string',
+            'banner_image' => ['max:255','nullable', 'dimensions:width=900,height=300'],
             'about' => 'required|string',
             'education' => 'required|string',
             'experience' => 'required|string',
@@ -36,46 +36,45 @@ class ProfileController extends Controller
             'whatsapp' => 'required|max:255|string',
         ]);
 
-    $user = User::find(auth()->user()->id);
-
-    // Delete old image if it exists
-    if ($request->hasFile('banner_image') && $user->page->banner_image) {
-        $oldImagePath = public_path('uploads/banners/') . $user->page->banner_image;
-        if (file_exists($oldImagePath)) {
-            unlink($oldImagePath);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors())->withInput();
         }
+
+        $user = User::find(auth()->user()->id);
+
+        if ($request->hasFile('banner_image')) {
+
+            $oldImagePath = public_path('uploads/banners/') . $user->banner_image;
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
+        }
+
+        if ($request->hasFile('banner_image')) {
+            $bannerImage = $request->file('banner_image');
+            $bannerImageName = 'banner_' . time() . '.' . $bannerImage->getClientOriginalExtension();
+            $bannerImage->move('uploads/banners/', $bannerImageName);
+            $user->banner_image = $bannerImageName;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->designation = $request->designation;
+        $user->mobile = $request->mobile;
+        $user->about = $request->about;
+        $user->education = $request->education;
+        $user->experience = $request->experience;
+        $user->website = $request->website;
+        $user->facebook = $request->facebook;
+        $user->linkedin = $request->linkedin;
+        $user->github = $request->github;
+        $user->twitter = $request->twitter;
+        $user->whatsapp = $request->whatsapp;
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully');
     }
-
-    // Store new image
-    if ($request->hasFile('banner_image')) {
-        $bannerImage = $request->file('banner_image');
-        $bannerImageName = time() . '.' . $bannerImage->getClientOriginalExtension();
-        $bannerImage->storeAs('uploads/banners', $bannerImageName, 'public');
-        $user->page->banner_image = $bannerImageName;
-    }
-
-    // Update other profile fields
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->designation = $request->designation;
-    $user->mobile = $request->mobile;
-
-    // Update page fields
-    $user->page->about = $request->about;
-    $user->page->education = $request->education;
-    $user->page->experience = $request->experience;
-    $user->page->website = $request->website;
-    $user->page->facebook = $request->facebook;
-    $user->page->linkedin = $request->linkedin;
-    $user->page->github = $request->github;
-    $user->page->twitter = $request->twitter;
-    $user->page->whatsapp = $request->whatsapp;
-
-    $user->save();
-    $user->page->save();
-
-    return redirect()->back()->with('success', 'Profile updated successfully');
-}
 
     public function updatePassword(Request $request){
         $validator = Validator::make($request->all(), [
