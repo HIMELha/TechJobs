@@ -23,9 +23,9 @@
                     @include('client.alert')
                     <form action="{{ route('profile.update') }}" method="POST" class="card border-0 shadow mb-4">
                         @csrf
-                        <div class="card-body  p-4">
+                        <div class="card-body row p-4">
                             <h3 class="fs-4 mb-1">My Profile</h3>
-                            <div class="mb-4">
+                            <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Name*</label>
                                 <input type="text" name="name" value="{{ auth()->user()->name }}"
                                     placeholder="Enter Name" value="{{ old('name') }}"
@@ -34,7 +34,7 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="mb-4">
+                            <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Email*</label>
                                 <input type="email" placeholder="Enter Email" name="email"
                                     value="{{ auth()->user()->email }}" value="{{ old('email') }}"
@@ -43,7 +43,7 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="mb-4">
+                            <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Designation*</label>
                                 <input type="text" placeholder="Designation" name="designation"
                                     value="{{ auth()->user()->designation }}" value="{{ old('designation') }}"
@@ -52,13 +52,110 @@
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="mb-4">
+                            <div class="col-md-6 mb-4">
                                 <label for="" class="mb-2">Mobile* <span class="text-info "
                                         style="font-size: 13px">(start with country code)</span></label>
                                 <input type="text" placeholder="+880 1743433433" name="mobile"
                                     value="{{ auth()->user()->mobile }}" value="{{ old('mobile') }}"
                                     class="form-control @error('mobile') is-invalid @enderror">
                                 @error('mobile')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">Banner Image</label>
+                                <input type="file" name="banner_image"
+                                    class="form-control @error('banner_image') is-invalid @enderror">
+                                @error('banner_image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="" class="mb-2">About*</label>
+                                <textarea type="text" placeholder="Enter About Yourself" name="about"
+                                    class="form-control @error('about') is-invalid @enderror" style="height: 120px">{{ auth()->user()->about }}</textarea>
+                                @error('about')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Education*</label>
+                                <input type="text" placeholder="Education" name="education"
+                                    value="{{ auth()->user()->education }}"
+                                    class="form-control @error('education') is-invalid @enderror">
+                                @error('education')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Experience*</label>
+                                <input type="text" placeholder="Experience" name="experience"
+                                    value="{{ auth()->user()->experience }}"
+                                    class="form-control @error('experience') is-invalid @enderror">
+                                @error('experience')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <br>
+                            <h5>Social info</h5>
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Website*</label>
+                                <input type="url" placeholder="Website" name="website"
+                                    value="{{ auth()->user()->website }}"
+                                    class="form-control @error('website') is-invalid @enderror">
+                                @error('website')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Facebook*</label>
+                                <input type="url" placeholder="Facebook" name="facebook"
+                                    value="{{ auth()->user()->facebook }}"
+                                    class="form-control @error('facebook') is-invalid @enderror">
+                                @error('facebook')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Linkedin*</label>
+                                <input type="url" placeholder="Linkedin" name="linkedin"
+                                    value="{{ auth()->user()->linkedin }}"
+                                    class="form-control @error('linkedin') is-invalid @enderror">
+                                @error('linkedin')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Github*</label>
+                                <input type="url" placeholder="Github" name="github"
+                                    value="{{ auth()->user()->github }}"
+                                    class="form-control @error('github') is-invalid @enderror">
+                                @error('facebook')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Twitter*</label>
+                                <input type="url" placeholder="twitter" name="twitter"
+                                    value="{{ auth()->user()->twitter }}"
+                                    class="form-control @error('twitter') is-invalid @enderror">
+                                @error('twitter')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label for="" class="mb-2">Whatsapp*</label>
+                                <input type="url" placeholder="Whatsapp" name="whatsapp"
+                                    value="{{ auth()->user()->whatsapp }}"
+                                    class="form-control @error('whatsapp') is-invalid @enderror">
+                                @error('whatsapp')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

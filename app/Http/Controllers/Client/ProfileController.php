@@ -20,26 +20,62 @@ class ProfileController extends Controller
     public function updateProfile(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:30',
-            'email' => 'required|email|max:50|unique:users,email,'.auth()->user()->id.',id',
+            'email' => 'required|email|max:50|unique:users,email,' . auth()->user()->id . ',id',
             'designation' => 'required|max:255',
-            'mobile' => 'required|min:10|max:20'
+            'mobile' => 'required|min:10|max:20',
+            // Add your additional validations for the new columns here
+            'banner_image' => 'required|string',
+            'about' => 'required|string',
+            'education' => 'required|string',
+            'experience' => 'required|string',
+            'website' => 'required|max:255|url',
+            'facebook' => 'required|max:255|url',
+            'linkedin' => 'required|max:255|url',
+            'github' => 'required|max:255|url',
+            'twitter' => 'required|max:255|url',
+            'whatsapp' => 'required|max:255|string',
         ]);
 
+    $user = User::find(auth()->user()->id);
 
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator->errors())->withInput();
+    // Delete old image if it exists
+    if ($request->hasFile('banner_image') && $user->page->banner_image) {
+        $oldImagePath = public_path('uploads/banners/') . $user->page->banner_image;
+        if (file_exists($oldImagePath)) {
+            unlink($oldImagePath);
         }
-
-        $user = User::find(auth()->user()->id);
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->designation = $request->designation;
-        $user->mobile = $request->mobile;
-        $user->save();
-
-        return redirect()->back()->with('success', 'Profile updated successfully');
     }
+
+    // Store new image
+    if ($request->hasFile('banner_image')) {
+        $bannerImage = $request->file('banner_image');
+        $bannerImageName = time() . '.' . $bannerImage->getClientOriginalExtension();
+        $bannerImage->storeAs('uploads/banners', $bannerImageName, 'public');
+        $user->page->banner_image = $bannerImageName;
+    }
+
+    // Update other profile fields
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->designation = $request->designation;
+    $user->mobile = $request->mobile;
+
+    // Update page fields
+    $user->page->about = $request->about;
+    $user->page->education = $request->education;
+    $user->page->experience = $request->experience;
+    $user->page->website = $request->website;
+    $user->page->facebook = $request->facebook;
+    $user->page->linkedin = $request->linkedin;
+    $user->page->github = $request->github;
+    $user->page->twitter = $request->twitter;
+    $user->page->whatsapp = $request->whatsapp;
+
+    $user->save();
+    $user->page->save();
+
+    return redirect()->back()->with('success', 'Profile updated successfully');
+}
 
     public function updatePassword(Request $request){
         $validator = Validator::make($request->all(), [
