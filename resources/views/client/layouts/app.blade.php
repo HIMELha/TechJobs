@@ -44,7 +44,7 @@
                         <a class="btn btn-outline-warning me-2" href="{{ route('profile.index') }}">My Profile</a>
                         <a class="btn btn-info text-white" href="{{ route('createJob') }}">Post a Job</a>
                     @else
-                        <a class="btn btn-outline-primary me-2" href="{{ route('login') }}">Login</a>
+                        <a class="btn btn-info text-white me-2" href="{{ route('login') }}">Login</a>
                         <a class="btn btn-outline me-2" href="{{ route('register') }}">Register</a>
                     @endauth
 
@@ -72,11 +72,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="text-white pt-3 fw-bold fs-6 mb-0">
-                        <a href="{{ route('index') }}">TechJobs</a> &copy; 2023-2024, all rights reserved
-                    </p>
-                    <p class="text-white pt-1 fw-bold fs-6 mb-0">
-                        Developed by <a href="https://webhimel.vercel.app">Himel Hasan</a>
+                    <p class="text-white fw-medium fs-6 mb-0">
+                        <a href="{{ route('index') }}" class="text-white">TechJobs</a> &copy; 2023-2024, all rights reserved | Developed by <a href="https://webhimel.vercel.app" class="text-primary">Himel Hasan</a>
                     </p>
                 </div>
             </div>

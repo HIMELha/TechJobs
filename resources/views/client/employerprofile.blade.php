@@ -30,7 +30,7 @@
                 <div class="col-lg-3">
                     <div class="card border-0 shadow mb-4 p-4">
                         <div class="s-body text-center mt-3">
-                            <img src="{{ $user->image == '' ? asset('jobportal-template/assets/images/avatar7.png') : asset('uploads/avatars/' . $user->image) }}"
+                            <img src="{{ $user->image ? asset('uploads/avatars/' . $user->image) : asset('jobportal-template/assets/images/avatar7.png')}}"
                                 alt="avatar" id="avatarImage" class="rounded-circle img-fluid"
                                 style="width: 150px; height: 150px">
                             <input type="hidden" id="baseAvatarUrl" value="{{ asset('uploads/avatars/') }}">
@@ -77,7 +77,7 @@
                         @php
                             $bannerImage = asset('uploads/banners/' . $user->banner_image);
                         @endphp
-                        @if ($user->banner_image && file_exists($bannerImage))
+                        @if ($user->banner_image)
                             <div>
                                 <img src="{{ $bannerImage  }}" alt="{{ $user->name }} Profile - TechJobs">
                             </div>
