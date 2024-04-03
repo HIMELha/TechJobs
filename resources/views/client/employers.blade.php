@@ -1,6 +1,9 @@
 @extends('client.layouts.app')
 @section('header')
-    <title>CareerVibe | Find Best Jobs</title>
+    <title>Explore employers | TechJobs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 @section('content')
     <section class="section-3 py-5 bg-2 ">
@@ -24,14 +27,14 @@
                     <div class="card border-0 shadow p-4">
                         <div class="mb-4">
                             <h2>Name or keywords</h2>
-                            <input type="text" placeholder="keywords" name="keywords" value="{{ $keyword ?? $keyword }}" id="keywords"
-                                class="form-control">
+                            <input type="text" placeholder="keywords" name="keywords" value="{{ $keyword ?? $keyword }}"
+                                id="keywords" class="form-control">
                         </div>
 
                         <div class="mb-4">
                             <h2>Location</h2>
-                            <input type="text" placeholder="Location" id="location" name="location" value="{{ $location ?? $location }}"
-                                class="form-control">
+                            <input type="text" placeholder="Location" id="location" name="location"
+                                value="{{ $location ?? $location }}" class="form-control">
                         </div>
                         <div class="mb-4">
                             <button type="submit" class="btn btn-info text-white">Find employer</button>
@@ -62,11 +65,38 @@
                                                                 <h5 class="mt-3 pb-0">{{ $user->name }}</h5>
                                                                 <p class="text-muted mb-1 fs-6">{{ $user->designation }}</p>
                                                             </div>
+                                                            <div
+                                                                class="px-3 mt-2 d-flex justify-content-center gap-1 align-items-center">
+                                                                @if ($user->website)
+                                                                    <a href="{{ $user->website }}" class="d-block"><i
+                                                                            class="fa-solid fa-globe mr-1" style="font-size: 20px !important"></i></a>
+                                                                @endif
+                                                                @if ($user->github)
+                                                                    <a href="{{ $user->github }}"><i
+                                                                            class="fa-brands fa-github mr-1" style="font-size: 20px !important"></i></a>
+                                                                @endif
+                                                                @if ($user->linkedin)
+                                                                    <a href="{{ $user->linkedin }}"><i
+                                                                            class="fa-brands fa-linkedin mr-1" style="font-size: 20px !important"></i></a>
+                                                                @endif
+
+                                                                @if ($user->twitter)
+                                                                    <a href="{{ $user->twitter }}"><i
+                                                                            class="fa-brands fa-twitter mr-1" style="font-size: 20px !important"></i></a>
+                                                                @endif
+
+                                                                @if ($user->facebook)
+                                                                    <a href="{{ $user->facebook }}"><i
+                                                                            class="fa-brands fa-facebook mr-1" style="font-size: 20px !important"></i></a>
+                                                                @endif
+
+                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="d-grid mt-3">
-                                                        <a href="{{ route('employers.view', $user->id) }}" class="btn btn-info text-white btn-lg">View
+                                                        <a href="{{ route('employers.view', $user->id) }}"
+                                                            class="btn btn-info text-white btn-lg">View
                                                             Porfile</a>
                                                     </div>
                                                 </div>

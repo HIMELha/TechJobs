@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->enum('type', ['starter', 'standard', 'premium']);
+            $table->string('phone');
+            $table->string('payment_method');
+            $table->string('transaction_id');
             $table->timestamps();
         });
     }

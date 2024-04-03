@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JobsController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/pages/{id}/delete', [PagesController::class, 'destroy'])->name('pages.pageDestroy');
         Route::post('/pages/{id}/updatee', [PagesController::class, 'update'])->name('pages.updatee');
 
+
+        Route::get('/membership', [SubscriptionController::class, 'index'])->name('membership.index');
+        Route::get('/membership/requests', [SubscriptionController::class, 'requests'])->name('membership.requests');
+        Route::post('/membership/requests/{id}/response', [SubscriptionController::class, 'responseRequest'])->name('membership.responseRequest');
 
 
 
