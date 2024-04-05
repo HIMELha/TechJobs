@@ -16,8 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('type', ['starter', 'standard', 'premium']);
             $table->string('phone');
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable();
             $table->string('transaction_id');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/membership', [SubscriptionController::class, 'index'])->name('membership.index');
         Route::get('/membership/requests', [SubscriptionController::class, 'requests'])->name('membership.requests');
-        Route::post('/membership/requests/{id}/response', [SubscriptionController::class, 'responseRequest'])->name('membership.responseRequest');
+        Route::get('/membership/requests/{id}/{response}', [SubscriptionController::class, 'responseRequest'])->name('membership.responseRequest');
 
 
 

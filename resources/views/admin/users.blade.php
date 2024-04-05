@@ -52,7 +52,7 @@
                                                     <td>{{ $user->jobs->count() }}</td>
                                                     <td>{{ $user->jobApplications->count() }}</td>
                                                     <td>
-                                                        <a href="{{ route('adminjobs.edit', $user->id) }}"
+                                                        <a href="{{ route('employers.view', $user->id) }}"
                                                             class="btn btn-sm btn-success">View profile</a>
                                                         <a href="{{ route('admin.usersdestroy', $user->id) }}"
                                                             class="btn btn-sm btn-danger">Delete</a>

@@ -236,7 +236,7 @@
 
                                 </div>
                                 <div class="d-grid mt-4">
-                                    <a href="{{ route('viewJob', $job->id) }}"
+                                    <a href="{{ route('checkoutMembership', 'starter') }}"
                                         class="btn btn-info text-white btn-lg">Checkout now</a>
                                 </div>
                             </div>
@@ -282,7 +282,7 @@
 
                                 </div>
                                 <div class="d-grid mt-4">
-                                    <a href="{{ route('viewJob', $job->id) }}"
+                                    <a href="{{ route('checkoutMembership', 'standard') }}"
                                         class="btn btn-info text-white btn-lg">Checkout now</a>
                                 </div>
                             </div>
@@ -328,7 +328,7 @@
 
                                 </div>
                                 <div class="d-grid mt-4">
-                                    <a href="{{ route('viewJob', $job->id) }}"
+                                    <a href="{{ route('checkoutMembership', 'premium') }}"
                                         class="btn btn-info text-white btn-lg">Checkout now</a>
                                 </div>
                             </div>

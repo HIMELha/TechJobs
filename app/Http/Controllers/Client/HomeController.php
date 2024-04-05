@@ -9,8 +9,10 @@ use App\Models\JobApplication;
 use App\Models\JobType;
 use App\Models\Page;
 use App\Models\SavedJob;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -137,6 +139,47 @@ class HomeController extends Controller
         }
 
         return view('client.page', compact('pagee'));
+    }
+
+
+    public function checkoutMembership($type){
+        
+        if($type == 'starter'){
+            return view('client.checkout', compact('type'));
+        } else if ($type == 'standard') {
+            return view('client.checkout', compact('type'));
+        }else{
+            return view('client.checkout', compact('type'));
+        }
+
+    }
+
+
+    public function storeMembership(Request $request, $type){
+
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required',
+            'transaction' => 'required|min:6'
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }
+
+        $alreadyAMember = Subscription::where(['user_id' => auth()->user()->id, 'type' => $type])->first();
+
+        if($alreadyAMember){
+            return redirect()->route('profile.index')->withError("You've already subscribed for '. $alreadyAMember->type.' Membership");
+        }
+
+        $membership = new Subscription;
+        $membership->user_id  = auth()->user()->id;
+        $membership->type  = $type;
+        $membership->phone  = $request->phone;
+        $membership->transaction_id  = $request->transaction;
+        $membership->save();
+
+        return redirect()->route('profile.index')->withSuccess('Premium membership application submitted successfully');
     }
 
 }

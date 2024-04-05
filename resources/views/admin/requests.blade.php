@@ -10,7 +10,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Membership</li>
+                    <li class="breadcrumb-item active">Membership Requests</li>
                 </ol>
             </nav>
 
@@ -27,7 +27,7 @@
                                     <div class="alert alert-error mt-2">{{ Session::get('error') }}</div>
                                 @endif
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="card-title">Membership</h5>
+                                    <h5 class="card-title">Membership Requests</h5>
 
                                 </div>
 
@@ -38,41 +38,47 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Joined on</th>
                                             <th scope="col">Membership type</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">TrxID</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @if ($memberships->isNotEmpty())
-                                            @foreach ($memberships as $job)
+                                        @if ($memberships->isNotEmpty())
+                                            @foreach ($memberships as $member)
                                                 <tr>
-                                                    <th scope="row">{{ $job->id }}</th>
-                                                    <td>{{ $job->user->name }}</td>
-                                                    <td>{{ $job->title }}</td>
-                                                    <td>{{ $job->category->name }}</td>
-                                                    <td>{{ $job->jobApplication->count() }} Application</td>
+                                                    <th scope="row">{{ $member->id }}</th>
+                                                    <td>{{ $member->user->name }}</td>
+                                                    <td>{{ date_format($member->created_at, 'd-m-Y') }}</td>
+                                                    <td>{{ $member->type }}</td>
+                                                    <td>{{ $member->phone }}</td>
+                                                    <td>{{ $member->transaction_id }}</td>
                                                     <td>
                                                         <p
-                                                            class="badge {{ $job->status == true ? 'bg-info' : 'bg-danger' }}">
-                                                            {{ $job->status == true ? 'Active' : 'Pending' }}</p>
+                                                            class="badge {{ $member->status == true ? 'bg-info' : 'bg-danger' }}">
+                                                            {{ $member->status == true ? 'Active' : 'Pending' }}</p>
                                                     </td>
                                                     <td class="d-flex gap-1">
-                                                        <a href="{{ route('adminjobs.edit', $job->id) }}"
-                                                            class="btn btn-sm btn-success">Edit</a>
-                                                        <a href="{{ route('adminjobs.destroy', $job->id) }}"
+                                                        @if ($member->status == false)
+                                                            <a href="{{ route('membership.responseRequest', [$member->id, 'approve']) }}"
+                                                            class="btn btn-sm btn-success">Approve</a>
+                                                        @endif
+                                                        
+                                                        <a href="{{ route('membership.responseRequest', [$member->id, 'delete']) }}"
                                                             class="btn btn-sm btn-danger">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td colspan="5" class="text-center">No Jobs available</td>
+                                                <td colspan="5" class="text-center">No membership requests available</td>
                                             </tr>
-                                        @endif --}}
+                                        @endif
                                     </tbody>
                                 </table>
 
-                                {{-- {{ $memberships->links('pagination::bootstrap-5') }} --}}
+                                {{ $memberships->links('pagination::bootstrap-5') }}
 
                             </div>
                         </div>
