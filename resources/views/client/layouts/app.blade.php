@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('jobportal-template/assets/css/style.css') }}" />
     <!-- Fav Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/MZp1SjX/TECH-photoaidcom-cropped.png" />
+    <link rel="icon" type="image/png" href="https://i.ibb.co/MZp1SjX/TECH-photoaidcom-cropped.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css">
 </head>
 
@@ -58,9 +59,9 @@
 
     <footer class=" py-3 bg-2" style="background-color: rgb(32, 186, 233)">
         <div class="container">
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center gap-3">
                 <div class="col-md-6 text-center text-md-start">
-                    <div class="d-flex flex-wrap justify-content-center justify-content-md-start">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-1">
                         <a class="text-white fw-bold fs-6 me-3" href="{{ route('index') }}">Home</a>
                         <a class="text-white fw-bold fs-6 me-3" href="{{ route('pages.view', 'About') }}">About</a>
                         <a class="text-white fw-bold fs-6 me-3" href="{{ route('pages.view', 'Contact') }}">Contact</a>
@@ -71,7 +72,7 @@
                         <a class="text-white fw-bold fs-6" href="https://www.facebook.com/webhimel032">Facebook</a>
                     </div>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                <div class="col-md-5 text-center text-md-end">
                     <p class="text-white fw-medium fs-6 mb-0">
                         <a href="{{ route('index') }}" class="text-white">TechJobs</a> &copy; 2023-2024, all rights reserved | Developed by <a href="https://webhimel.vercel.app" class="text-primary">Himel Hasan</a>
                     </p>

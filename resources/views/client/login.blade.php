@@ -1,5 +1,8 @@
 @extends('client.layouts.app')
-@yield('headers')
+@section('header')
+    <title>Login to your account</title>
+    <meta name="description" content="Login to your account">
+@endsection
 @section('content')
     <section class="section-5">
         <div class="container my-5">

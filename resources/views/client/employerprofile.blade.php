@@ -1,6 +1,15 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>{{ $user->name }} Profile - TechJobs</title>
+    <!-- Open Graph  meta tags -->
+    <meta property="og:title" content="{{ $user->name }} Profile - TechJobs">
+    <meta property="og:description" content="{{ $user->designation }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ Request::url() }}">
+    <meta property="og:image"
+        content="{{ $user->image ? asset('uploads/avatars/' . $user->image) : asset('jobportal-template/assets/images/avatar7.png') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -30,12 +39,20 @@
                 <div class="col-lg-3">
                     <div class="card border-0 shadow mb-4 p-4">
                         <div class="s-body text-center mt-3">
-                            <img src="{{ $user->image ? asset('uploads/avatars/' . $user->image) : asset('jobportal-template/assets/images/avatar7.png')}}"
-                                alt="avatar" id="avatarImage" class="rounded-circle img-fluid"
+                            <img src="{{ $user->image ? asset('uploads/avatars/' . $user->image) : asset('jobportal-template/assets/images/avatar7.png') }}"
+                                alt="{{ $user->name }} - TechJobs" id="avatarImage" class="rounded-circle img-fluid"
                                 style="width: 150px; height: 150px">
+
                             <input type="hidden" id="baseAvatarUrl" value="{{ asset('uploads/avatars/') }}">
 
-                            <h5 class="mt-3 pb-0">{{ $user->name }}</h5>
+                            <h5 class="mt-3 pb-0  text-center">{{ $user->name }}
+                                @if ($subscription)
+                                    <img class="verificationBadge"
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz6BwqUK7GcdwCGF4RvvZA8KabNsqIIEW5d8IYMz1gAQ&s"
+                                        alt="{{ $user->name }} - Verified">
+                                @endif
+                            </h5>
+
                             <p class="text-muted mb-1 fs-6">{{ $user->designation }}</p>
 
                             <p class="mt-3">Connect with {{ Str::words($user->name, 1, '') }}</p>
@@ -66,6 +83,14 @@
 
                             </div>
 
+
+                            <div class="px-3 mt-5 pt-2">
+                                @if ($subscription)
+                                    <p class="text-center mb-0" style="font-size: 15px !important">Paid member since: </p>
+                                    <span class="badge bg-info"
+                                        style="margin-top: -10px !important">{{ date_format($subscription->created_at, 'd M Y') }}</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -79,14 +104,15 @@
                         @endphp
                         @if ($user->banner_image)
                             <div>
-                                <img src="{{ $bannerImage  }}" alt="{{ $user->name }} Profile - TechJobs">
+                                <img src="{{ $bannerImage }}" alt="{{ $user->name }} Profile - TechJobs">
                             </div>
                         @else
                             <div>
-                                <img src="{{ asset('uploads/banners/' . 'default.png')  }}" alt="{{ $user->name }} Profile - TechJobs">
+                                <img src="{{ asset('uploads/banners/' . 'default.png') }}"
+                                    alt="{{ $user->name }} Profile - TechJobs">
                             </div>
                         @endif
-                        
+
                         <div class="p-4">
                             <h5>About {{ $user->name }}</h5>
                             <p>{{ $user->about ? $user->about : 'Not available' }}</p>

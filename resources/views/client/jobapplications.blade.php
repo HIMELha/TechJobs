@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>Job Application - TechJobs</title>
+    <meta name="description" content="Job Application - TechJobs">
 @endsection
 
 
@@ -52,14 +54,19 @@
                                                     <td>
                                                         <div class="job-name fw-500">{{ $application->id }}</div>
                                                     </td>
-                                                    <td><a href="{{ route('employers.view', $application->user->id) }}">{{ $application->user->name }}</a></td>
+                                                    <td><a
+                                                            href="{{ route('employers.view', $application->user->id) }}">{{ $application->user->name }}</a>
+                                                    </td>
                                                     <td>{{ $application->user->email }}</td>
-                                                    <td>{{ $application->user->phone ? $application->user->phone : 'Not Added' }}</td>
-                                                    <td>
-                                                        <div class="job-status text-capitalize text-success">{{ date_format($application->created_at, 'd M Y') }}</div>
+                                                    <td>{{ $application->user->phone ? $application->user->phone : 'Not Added' }}
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('employers.view', $application->user->id) }}" class="btn btn-sm btn-success text-white">View Profile</a>
+                                                        <div class="job-status text-capitalize text-success">
+                                                            {{ date_format($application->created_at, 'd M Y') }}</div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('employers.view', $application->user->id) }}"
+                                                            class="btn btn-sm btn-success text-white">View Profile</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

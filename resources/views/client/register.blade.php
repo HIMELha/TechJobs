@@ -1,6 +1,6 @@
 @extends('client.layouts.app')
 @section('header')
-    <title>Registration - TechJobs</title>
+    <title>Create account - TechJobs</title>
 @endsection
 @section('content')
     <section class="section-5">

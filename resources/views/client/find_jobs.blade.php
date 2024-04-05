@@ -1,6 +1,7 @@
 @extends('client.layouts.app')
 @section('header')
-    <title>CareerVibe | Find Best Jobs</title>
+    <title>Find and search jobs - TechJobs</title>
+    <meta name="description" content="Find and search jobs - TechJobs">
 @endsection
 @section('content')
     <section class="section-3 py-5 bg-2 ">

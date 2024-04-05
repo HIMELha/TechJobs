@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>My Account Settings - TechJobs</title>
+    
 @endsection
 
 
@@ -15,7 +17,8 @@
                             <li class="breadcrumb-item active">Account Settings</li>
                         </ol>
                     </nav>
-                    <a href="{{ route('employers.view', auth()->user()->id) }}" class="btn btn-sm btn-info text-white mb-4">View as</a>
+                    <a href="{{ route('employers.view', auth()->user()->id) }}"
+                        class="btn btn-sm btn-info text-white mb-4">View as</a>
                 </div>
             </div>
             <div class="row">

@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>My Jobs Lists - TechJobs</title>
+    <meta name="description" content="My Jobs Lists - TechJobs">
 @endsection
 
 

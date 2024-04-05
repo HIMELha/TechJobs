@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>Forgot password - TechJobs</title>
+    <meta name="description" content="Forgot password - TechJobs">
 @endsection
 
 

@@ -1,7 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
-    <title>Reset password</title>
+    <title>Password Recovery - TechJobs</title>
+    <meta name="description" content="Password Recovery - TechJobs">
 @endsection
 
 @section('content')

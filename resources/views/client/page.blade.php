@@ -1,6 +1,7 @@
 @extends('client.layouts.app')
 @section('header')
     <title>{{ $pagee->title }}</title>
+    <meta name="description" content="{{ $pagee->title }}">
 @endsection
 @section('content')
     <section class="section-5">

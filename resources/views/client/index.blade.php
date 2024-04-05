@@ -1,6 +1,12 @@
 @extends('client.layouts.app')
 @section('header')
     <title>TechJobs | Best Job Finding Platform</title>
+    <!-- Open Graph  meta tags -->
+    <meta property="og:title" content="TechJobs | Best Job Finding Platform">
+    <meta property="og:description" content="TechJobs | Best Job Finding Platform">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ Request::url() }}">
+    <meta property="og:image" content="{{ asset('jobportal-template/assets/images/banner5.jpg') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="

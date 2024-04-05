@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>Update Job - TechJobs</title>
+    <meta name="description" content="Update Job - TechJobs">
 @endsection
 
 
@@ -133,24 +135,26 @@
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Benefits</label>
-                                <textarea class="form-control textarea @error('benifits') is-invalid @enderror" name="benifits" id="benifits" cols="5"
-                                    rows="5" placeholder="Benifits"> {{ $job->benifits }} </textarea>
+                                <textarea class="form-control textarea @error('benifits') is-invalid @enderror" name="benifits" id="benifits"
+                                    cols="5" rows="5" placeholder="Benifits"> {{ $job->benifits }} </textarea>
                                 @error('benifits')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Responsibility</label>
-                                <textarea value="{{ $job->responsibility }}" class="form-control textarea @error('responsibility') is-invalid @enderror"
-                                    name="responsibility" id="responsibility" cols="5" rows="5" placeholder="Responsibility"> {{ $job->responsibility }} </textarea>
+                                <textarea value="{{ $job->responsibility }}"
+                                    class="form-control textarea @error('responsibility') is-invalid @enderror" name="responsibility"
+                                    id="responsibility" cols="5" rows="5" placeholder="Responsibility"> {{ $job->responsibility }} </textarea>
                                 @error('responsibility')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="mb-4">
                                 <label for="" class="mb-2">Qualifications</label>
-                                <textarea value="{{ $job->qualifications }}" class="form-control textarea @error('qualifications') is-invalid @enderror"
-                                    name="qualifications" id="qualifications" cols="5" rows="5" placeholder="Qualifications">{{ $job->qualifications }}</textarea>
+                                <textarea value="{{ $job->qualifications }}"
+                                    class="form-control textarea @error('qualifications') is-invalid @enderror" name="qualifications"
+                                    id="qualifications" cols="5" rows="5" placeholder="Qualifications">{{ $job->qualifications }}</textarea>
                                 @error('qualifications')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror

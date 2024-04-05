@@ -1,6 +1,14 @@
 @extends('client.layouts.app')
 @section('header')
     <title>Explore employers | TechJobs</title>
+    <meta name="description">Explore employers | TechJobs</meta>
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Explore employers | TechJobs">
+    <meta property="og:description" content="Explore employers | TechJobs">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ Request::url() }}">
+    <meta property="og:image" content="">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -62,7 +70,16 @@
                                                                 <input type="hidden" id="baseAvatarUrl"
                                                                     value="{{ asset('uploads/avatars/') }}">
 
-                                                                <h5 class="mt-3 pb-0">{{ $user->name }}</h5>
+                                                                <h5 class="mt-3 pb-0  text-center">{{ $user->name }}
+                                                                @php
+                                                                    $subscription = \App\Models\Subscription::where('user_id', $user->id)->latest()->first();
+                                                                @endphp
+                                                                @if ($subscription)
+                                                                    <img class="verificationBadge"
+                                                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz6BwqUK7GcdwCGF4RvvZA8KabNsqIIEW5d8IYMz1gAQ&s"
+                                                                        alt="{{ $user->name }} - Verified">
+                                                                @endif
+                                                            </h5>
                                                                 <p class="text-muted mb-1 fs-6">{{ $user->designation }}</p>
                                                             </div>
                                                             <div

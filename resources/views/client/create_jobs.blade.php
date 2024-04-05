@@ -1,6 +1,8 @@
 @extends('client.layouts.app')
 
 @section('header')
+    <title>Create New Job</title>
+    <meta name="description" content="Create New Job">
 @endsection
 
 

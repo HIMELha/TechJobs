@@ -46,9 +46,11 @@ class EmployerController extends Controller
         $startDate = Carbon::now()->subDays(7)->toDateString();
         $endDate = Carbon::now()->toDateString();
         $jobs = $user->jobs()->whereBetween('created_at', [$startDate, $endDate])->paginate(3);
+        $subscription = $user->subscription()->latest()->first();
 
         $data['user'] = $user;
         $data['jobs'] = $jobs;
+        $data['subscription'] = $subscription;
         return view('client.employerprofile', $data);
     }
 }

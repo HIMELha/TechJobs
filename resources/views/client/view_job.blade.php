@@ -2,6 +2,8 @@
 
 
 @section('header')
+    <title>{{ $job->title }}</title>
+    <meta name="description" content="{{ $job->title }}">
 @endsection
 
 @section('content')
