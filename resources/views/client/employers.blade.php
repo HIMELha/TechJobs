@@ -1,7 +1,7 @@
 @extends('client.layouts.app')
 @section('header')
     <title>Explore employers | TechJobs</title>
-    <meta name="description">Explore employers | TechJobs</meta>
+    <meta name="description" content="Explore employers | TechJobs"></meta>
     <!-- Open Graph meta tags -->
     <meta property="og:title" content="Explore employers | TechJobs">
     <meta property="og:description" content="Explore employers | TechJobs">

@@ -85,7 +85,8 @@
 
                                         <div class="row">
                                             <div class="col-lg-3 col-md-4 label">Job</div>
-                                            <div class="col-lg-9 col-md-8">Aj gorib bole kew job dey na  😔, mama khalu nai bole 😓</div>
+                                            <div class="col-lg-9 col-md-8">Se kotha boliyen na. kew chay certificate kew
+                                                chay experience, tai goriber jonno chakri noy business 🏆</div>
                                         </div>
 
                                         <div class="row">
@@ -95,7 +96,9 @@
 
                                         <div class="row">
                                             <div class="col-lg-3 col-md-4 label">Address</div>
-                                            <div class="col-lg-9 col-md-8">Hu address di ar apni pore police niya amar basay asen😩</div>
+                                            <div class="col-lg-9 col-md-8">Apnader bajarer bkash er dokaner samne bosa thaka
+                                                loktir barir pasher elakar choto vaier <a href="">see more...</a>
+                                            </div>
                                         </div>
 
                                         <div class="row">
@@ -116,7 +119,8 @@
 
                                             @csrf
                                             <div class="row mb-3">
-                                                <label for="" class="col-md-4 col-lg-3 col-form-label">Site name</label>
+                                                <label for="" class="col-md-4 col-lg-3 col-form-label">Site
+                                                    name</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="site_name" type="text" class="form-control"
                                                         id="site_name" value="{{ $settings->site_name }}" required>
@@ -129,11 +133,12 @@
                                             </div>
 
                                             <div class="row mb-3">
-                                                <label for=""
-                                                    class="col-md-4 col-lg-3 col-form-label">Hero title</label>
+                                                <label for="" class="col-md-4 col-lg-3 col-form-label">Hero
+                                                    title</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="site_hero_title" type="text"
-                                                        class="form-control required" id="site_hero_title"  value="{{ $settings->site_hero_title }}" required>
+                                                        class="form-control required" id="site_hero_title"
+                                                        value="{{ $settings->site_hero_title }}" required>
                                                 </div>
                                                 @error('site_hero_title')
                                                     <div class="invalid-feedback">
@@ -143,11 +148,13 @@
                                             </div>
 
                                             <div class="row mb-3">
-                                                <label for=""
-                                                    class="col-md-4 col-lg-3 col-form-label">Hero description</label>
+                                                <label for="" class="col-md-4 col-lg-3 col-form-label">Hero
+                                                    description</label>
                                                 <div class="col-md-8 col-lg-9">
                                                     <input name="site_hero_desc" type="text"
-                                                        class="form-control required" value="{{ $settings->site_hero_desc }}" id="site_hero_desc" required>
+                                                        class="form-control required"
+                                                        value="{{ $settings->site_hero_desc }}" id="site_hero_desc"
+                                                        required>
                                                 </div>
                                                 @error('site_hero_desc')
                                                     <div class="invalid-feedback">

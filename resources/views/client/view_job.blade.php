@@ -73,23 +73,23 @@
                         <div class="descript_wrap white-bg">
                             <div class="single_wrap">
                                 <h4>Job description</h4>
-                                <p>{{ $job->description }}</p>
+                                <p>{!! $job->description !!}</p>
                             </div>
                             <div class="single_wrap">
                                 <h4>Responsibility</h4>
                                 <ul>
-                                    p{{ $job->responsibility }}
+                                    {!! $job->responsibility !!}
                                 </ul>
                             </div>
                             <div class="single_wrap">
                                 <h4>Qualifications</h4>
                                 <ul>
-                                    <p>{{ $job->qualifications }}</p>
+                                    <p>{!! $job->qualifications !!}</p>
                                 </ul>
                             </div>
                             <div class="single_wrap">
                                 <h4>Benefits</h4>
-                                <p>{{ $job->benifits }}</p>
+                                <p>{!! $job->benifits !!}</p>
                             </div>
                             <div class="border-bottom"></div>
                             <div class="pt-3 text-end">
