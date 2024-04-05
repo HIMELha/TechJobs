@@ -16,7 +16,7 @@
 
             <section class="section">
                 <div class="row">
-                    <div class="col-lg-10 d-block mx-auto">
+                    <div class="col-lg-11 d-block mx-auto">
 
                         <div class="card">
                             <div class="card-body">
@@ -29,7 +29,8 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h5 class="card-title">Jobs</h5>
 
-                                    <a href="{{ route('adminjobs.create') }}" class="btn btn-info text-white btn-sm">Post Job</a>
+                                    <a href="{{ route('adminjobs.create') }}" class="btn btn-info text-white btn-sm">Post
+                                        Job</a>
                                 </div>
 
                                 <table class="table">
@@ -41,7 +42,7 @@
                                             <th scope="col">Category</th>
                                             <th scope="col">Application</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,6 +60,8 @@
                                                             {{ $job->status == true ? 'Active' : 'Pending' }}</p>
                                                     </td>
                                                     <td class="d-flex gap-1">
+                                                        <a href="{{ route('adminjobs.applications', $job->id) }}"
+                                                            class="btn btn-sm btn-info text-white">view applications</a>
                                                         <a href="{{ route('adminjobs.edit', $job->id) }}"
                                                             class="btn btn-sm btn-success">Edit</a>
                                                         <a href="{{ route('adminjobs.destroy', $job->id) }}"

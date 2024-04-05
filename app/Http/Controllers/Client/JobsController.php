@@ -101,5 +101,13 @@ class JobsController extends Controller
         return redirect()->route('jobs.index')->with('success', 'Job deleted successfully');
     }
 
-    
+    public function jobApplication($id){
+        $job = Job::with('jobApplication')->where(['user_id' => auth()->user()->id, 'id' => $id])->first();
+
+        if(!$job){
+            return redirect()->route('jobs.index')->with('error', 'Job not found');
+        }
+
+        return view('client.jobapplications', compact('job'));
+    }
 }

@@ -49,10 +49,12 @@
                                                 <tr class="active">
                                                     <td>
                                                         <div class="job-name fw-500">{{ $job->title }}</div>
-                                                        <div class="info1">{{ $job->category->name }} . Noida</div>
+                                                        <div class="info1">{{ $job->category->name }}</div>
                                                     </td>
                                                     <td>{{ date_format($job->created_at, 'd M Y') }}</td>
-                                                    <td>{{ $job->jobApplication->count() }} Applications</td>
+                                                    <td><a class="bg-info text-white px-2 py-1"
+                                                            href="{{ route('jobs.application', $job->id) }}">
+                                                            {{ $job->jobApplication->count() }} Applications</a></td>
                                                     <td>
                                                         @if ($job->status)
                                                             <div class="job-status text-capitalize text-success">active
@@ -70,16 +72,21 @@
                                                                 aria-expanded="false">
                                                                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                             </a>
+
                                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                                <li><a class="dropdown-item" href="{{ route('viewJob', $job->id) }}"> <i
+                                                                <li><a class="dropdown-item"
+                                                                        href="{{ route('viewJob', $job->id) }}"> <i
                                                                             class="fa fa-eye" aria-hidden="true"></i>
                                                                         View</a>
                                                                 </li>
-                                                                <li><a class="dropdown-item" href="{{ route('editJob', $job->id) }}"><i
+
+                                                                <li><a class="dropdown-item"
+                                                                        href="{{ route('editJob', $job->id) }}"><i
                                                                             class="fa fa-edit" aria-hidden="true"></i>
                                                                         Edit</a>
                                                                 </li>
-                                                                <li><a class="dropdown-item" href="{{ route('deleteJob', $job->id) }}"><i
+                                                                <li><a class="dropdown-item"
+                                                                        href="{{ route('deleteJob', $job->id) }}"><i
                                                                             class="fa fa-trash" aria-hidden="true"></i>
                                                                         Remove</a></li>
                                                             </ul>

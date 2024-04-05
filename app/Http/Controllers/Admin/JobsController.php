@@ -7,6 +7,7 @@ use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Category;
 use App\Models\Job;
+use App\Models\JobApplication;
 use App\Models\JobType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -130,5 +131,18 @@ class JobsController extends Controller
         $job->delete();
 
         return redirect()->route('adminjobs.index')->with('success', 'Job deleted successfully');
+    }
+
+    
+
+    public function applications($id){
+        $job = Job::find($id);
+
+        if(!$job){
+            return redirect()->back()->withError('Job not found');
+        }
+
+        $applications = JobApplication::where('job_id', $id)->latest()->paginate(12);
+        return view('admin.applications', compact(['applications', 'job']));
     }
 }

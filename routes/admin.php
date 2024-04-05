@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('/adminjobs', JobsController::class);
         Route::post('/adminjobs/{id}/updatee', [JobsController::class, 'update'])->name('adminjobs.updatee');
         Route::get('/adminjobs/{id}/delete', [JobsController::class, 'destroy'])->name('adminjobs.destroy');
+        Route::get('/adminjobs/{id}/applications', [JobsController::class, 'applications'])->name('adminjobs.applications');
 
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
         Route::get('/users/{id}/delete', [UserController::class, 'destroy'])->name('admin.usersdestroy');

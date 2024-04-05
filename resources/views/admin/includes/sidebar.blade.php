@@ -20,6 +20,7 @@
                         'adminjobs.create',
                         'category.index',
                         'categories.edit',
+                        'adminjobs.applications'
                     ])
                 ) {
                     $collapsed = false;
@@ -54,13 +55,6 @@
                 href="{{ route('admin.users') }}">
                 <i class="bi bi-person"></i>
                 <span>Users</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
-                <i class="bx bx-briefcase"></i>
-                <span>Companies</span>
             </a>
         </li>
 
