@@ -189,7 +189,7 @@
                 }
             });
         }
-
+        
         loadJobs();
 
         let timer;

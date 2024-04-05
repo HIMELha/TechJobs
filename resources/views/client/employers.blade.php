@@ -111,8 +111,9 @@
 
                             </div>
                         </div>
-
-                        {{ $users->links('pagination::bootstrap-4') }}
+                        <div class="mt-5">
+                            {{ $users->links('pagination::bootstrap-5') }}
+                        </div>
                     </div>
                 </div>
 
@@ -122,110 +123,5 @@
 @endsection
 
 @section('javascript')
-    {{-- <script>
-        function loadJobs() {
-            const jobLists = $('#JobsLists');
-
-            const csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-            const keyword = $('#keywords').val();
-            const location = $('#location').val();
-            const category = $('#category').val();
-            const experience = $('#experience').val();
-            const sort = $('#sort').val();
-            const job_types = [];
-            const selectedJobTypes = $('#jobTypes input[name="job_type"]');
-
-            selectedJobTypes.each(function() {
-                if ($(this).is(':checked')) {
-                    job_types.push($(this).val());
-                }
-            });
-
-            $.ajax({
-                url: "{{ route('jobs.get') }}",
-                type: 'post',
-                data: {
-                    _token: csrfToken,
-                    keyword: keyword,
-                    location: location,
-                    category: category,
-                    job_types: job_types,
-                    experience: experience,
-                    sort: sort
-                },
-                beforeSend: function() {
-                    const animation = `
-                        <div class="col-12 mt-5" >
-                            <div class="d-block mx-auto spinner-border text-info" role="status">                          
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>`;
-                    jobLists.html(animation);
-                },
-                success: function(response) {
-
-                    if (response.status == true && response.jobs.data.length > 0) {
-                        const routeViewJob = "{{ route('viewJob', '') }}";
-                        const jobs = response.jobs.data;
-
-                        let jobsHtml = '';
-                        jobs.forEach(job => {
-                            const desc = job.description.substring(0, 30);
-                            const jobId = job.id;
-                            const jobhtml = `
-                            <div class="col-md-12 col-lg-6 col-xl-4">
-                                <div class="card border-0 p-3 shadow mb-4 d-flex flex-column h-100">
-                                    <div class="card-body  d-flex flex-column justify-contents-between">
-                                        <h3 class="border-0 fs-5 pb-2 mb-0">${job.title}</h3>
-                                        <p>${desc}</p>
-                                        <div class="bg-light p-3 border flex-grow-1">
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                                <span class="ps-1">${job.company_location}</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-clock-o"></i></span>
-                                                <span class="ps-1">${job.job_type.name}</span>
-                                            </p>
-                                            <p class="mb-0">
-                                                <span class="fw-bolder"><i class="fa fa-usd"></i></span>
-                                                <span class="ps-1">${job.min_salary} - ${job.max_salary}</span>
-                                            </p>
-                                        </div>
-
-                                        <div class="d-grid mt-3">
-                                            <a href="${routeViewJob}/${jobId}" class="btn btn-info text-white btn-lg">Details</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>`;
-
-                            jobsHtml += jobhtml;
-                        });
-                        jobLists.html(jobsHtml);
-                    } else {
-                        jobLists.html(
-                            '<div class="col-12 mt-5"> <h5 style="text-align: center"> No Jobs available </h5> </div>'
-                        );
-                    }
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-        }
-
-        loadJobs();
-
-        let timer;
-
-        $('#keywords, #location, #category, input[name="job_type"], #experience, #sort').on('input', function() {
-            clearTimeout(timer);
-
-            timer = setTimeout(() => {
-                loadJobs();
-            }, 600);
-        });
-    </script> --}}
+   
 @endsection

@@ -41,7 +41,7 @@ class HomeController extends Controller
     }
 
     public function jobs(Request $query){
-        $jobs = Job::with(['category', 'job_type'])->where('status', true)->latest()->paginate(12);
+        $jobs = Job::with(['category', 'job_type'])->where('status', true)->latest();
         $categories = Category::where('status', true)->latest()->paginate(10);
         $job_types = JobType::where('status', true)->latest()->paginate(10);
         $job_types = JobType::where('status', true)->latest()->paginate(10);
@@ -52,7 +52,7 @@ class HomeController extends Controller
             'category_f' => $query->has('category') ? $query->category : ''
         ];
 
-        $data['jobs'] = $jobs;
+        $data['jobs'] = $jobs->paginate(12);
         $data['job_types'] = $job_types;
         $data['categories'] = $categories;
         return view('client.find_jobs', $data);
