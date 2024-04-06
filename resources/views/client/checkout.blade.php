@@ -92,8 +92,8 @@
 
                             <div class="d-flex flex-column gap-1">
                                 <span class="my-2" style="font-size: 17px !important">Please pay through this</span>
-                                <p><b>Bkash:</b> 01747760521</p>
-                                <p><b>Nagad:</b> 01747760521</p>
+                                <p><b>Bkash:</b> 🤠🤝💖</p>
+                                <p><b>Nagad:</b> 🤠🤝💖</p>
                                 <p><b>Binance:</b> Alexanderdraper032@gmail.com</p>
                             </div>
 

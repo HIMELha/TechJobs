@@ -24,7 +24,7 @@ class ProfileController extends Controller
             'email' => 'required|email|max:50|unique:users,email,' . auth()->user()->id . ',id',
             'designation' => 'required|max:255',
             'mobile' => 'required|min:10|max:20',
-            'banner_image' => ['max:255','nullable', 'dimensions:width=900,height=300'],
+            'banner_image' => ['nullable', 'dimensions:width=900,height=300'],
             'about' => 'required|string',
             'education' => 'required|string',
             'experience' => 'required|string',
@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         $user = User::find(auth()->user()->id);
 
-        if ($request->hasFile('banner_image')) {
+        if ($request->hasFile('banner_image') && $user->banner_image) {
 
             $oldImagePath = public_path('uploads/banners/') . $user->banner_image;
             if (file_exists($oldImagePath)) {
