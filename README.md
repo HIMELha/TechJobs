@@ -1,15 +1,19 @@
+## TechJob - Job Finding Platform
 
-## TechJob is a job finding platform
+Welcome to TechJob, your go-to platform for finding exciting job opportunities!
 
-# Let's try a demo
+### Demo:
 
-### User Login: https://webhex.xyz/techjobs/login
-### Admin Login: https://webhex.xyz/techjobs/login
+- **User Login:** [User Login](https://webhex.xyz/techjobs/login)
+- **Admin Login:** [Admin Login](https://webhex.xyz/techjobs/login)
 
-## User same email and password for both admin and user
+### Credentials:
+- **Email:** webhimel032@gmail.com
+- **Password:** webhimel032@gmail.com
 
-## Email: webhimel032@gmail.com
-## Password: webhimel032@gmail.com
+*Note: Use the same email and password for both admin and user logins.*
 
+### Give Us a Star!
+If you find our platform useful, don't forget to give us a star!
 
-### Don't forget to give an star
+Thank you for trying out TechJob!
