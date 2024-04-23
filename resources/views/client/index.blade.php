@@ -109,7 +109,7 @@
                                         <div class="card border-0 p-3 shadow mb-4 d-flex flex-column h-100">
                                             <div class="card-body d-flex flex-column justify-contents-between">
                                                 <h3 class="border-0 fs-5 pb-2 mb-0">{{ $job->title }}</h3>
-                                                <p>{!! Str::words($job->description, 20, '...') !!}</p>
+                                                <p>{{ strip_tags(Str::words($job->description, 20, '...')) }}</p>
                                                 <div class="bg-light p-3 border flex-grow-1">
                                                     <p class="mb-0">
                                                         <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
@@ -159,7 +159,7 @@
                                         <div class="card border-0 p-3 shadow mb-4 d-flex flex-column h-100">
                                             <div class="card-body d-flex flex-column justify-contents-between">
                                                 <h3 class="border-0 fs-5 pb-2 mb-0">{{ $job->title }}</h3>
-                                                <p>{!! Str::words($job->description, 20, '...') !!}</p>
+                                                <p>{!! strip_tags(Str::words($job->description, 20, '...')) !!}</p>
                                                 <div class="bg-light p-3 border flex-grow-1">
                                                     <p class="mb-0">
                                                         <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>

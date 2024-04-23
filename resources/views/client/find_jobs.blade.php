@@ -146,14 +146,15 @@
 
                         let jobsHtml = '';
                         jobs.forEach(job => {
-                            const desc = job.description.substring(0, 30);
+                            const descriptionWithoutHTML = job.description.replace(/<[^>]*>?/gm, '');
+                            const desc = descriptionWithoutHTML.substring(0, 30);
                             const jobId = job.id;
                             const jobhtml = `
                             <div class="col-md-12 col-lg-6 col-xl-4">
                                 <div class="card border-0 p-3 shadow mb-4 d-flex flex-column h-100">
                                     <div class="card-body  d-flex flex-column justify-contents-between">
                                         <h3 class="border-0 fs-5 pb-2 mb-0">${job.title}</h3>
-                                        <p>${desc}</p>
+                                        <p>${desc}...</p>
                                         <div class="bg-light p-3 border flex-grow-1">
                                             <p class="mb-0">
                                                 <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>

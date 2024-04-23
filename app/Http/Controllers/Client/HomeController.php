@@ -169,7 +169,7 @@ class HomeController extends Controller
         $alreadyAMember = Subscription::where(['user_id' => auth()->user()->id, 'type' => $type])->first();
 
         if($alreadyAMember){
-            return redirect()->route('profile.index')->withError("You've already subscribed for '. $alreadyAMember->type.' Membership");
+            return redirect()->route('profile.index')->withError("You've already subscribed for The Membership");
         }
 
         $membership = new Subscription;

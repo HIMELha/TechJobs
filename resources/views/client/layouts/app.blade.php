@@ -23,7 +23,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-3">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('index') }}">TechJobs</a>
+                <a class="navbar-brand" href="{{ route('index') }}">TechJobsNetwork</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,8 @@
                 </div>
                 <div class="col-md-5 text-center text-md-end">
                     <p class="text-white fw-medium fs-6 mb-0">
-                        <a href="{{ route('index') }}" class="text-white">TechJobs</a> &copy; 2023-2024, all rights reserved | Developed by <a href="https://webhimel.vercel.app" class="text-primary">Himel Hasan</a>
+                        <a href="{{ route('index') }}" class="text-white">TechJobsNetwork</a> &copy; 2023-2024, all rights reserved 
+                        <br />  Developed by <a href="https://webhimel.vercel.app" class="text-primary">Himel Hasan</a>
                     </p>
                 </div>
             </div>

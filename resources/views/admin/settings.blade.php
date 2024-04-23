@@ -85,8 +85,11 @@
 
                                         <div class="row">
                                             <div class="col-lg-3 col-md-4 label">Job</div>
-                                            <div class="col-lg-9 col-md-8">Se kotha boliyen na. kew chay certificate kew
-                                                chay experience, tai goriber jonno chakri noy business 🏆</div>
+                                            <div class="col-lg-9 col-md-8">No Job, No Experience and nothing</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-4 label">Education</div>
+                                            <div class="col-lg-9 col-md-8">UnEducated</div>
                                         </div>
 
                                         <div class="row">
@@ -96,8 +99,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-3 col-md-4 label">Address</div>
-                                            <div class="col-lg-9 col-md-8">Apnader bajarer bkash er dokaner samne bosa thaka
-                                                loktir barir pasher elakar choto vaier <a href="">see more...</a>
+                                            <div class="col-lg-9 col-md-8">Undefined variable $address
                                             </div>
                                         </div>
 
