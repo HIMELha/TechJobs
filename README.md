@@ -4,8 +4,8 @@ Welcome to TechJob, your go-to platform for finding exciting job opportunities!
 
 ### Demo:
 
-- **User Login:** [User Login](https://webhex.xyz/techjobs/login)
-- **Admin Login:** [Admin Login](https://webhex.xyz/techjobs/login)
+- **User Login:** [User Login](https://techjobsnetwork.webhex.xyz/login)
+- **Admin Login:** [Admin Login](https://techjobsnetwork.webhex.xyz/admin/login)
 
 ### Credentials:
 - **Email:** webhimel032@gmail.com
